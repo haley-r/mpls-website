@@ -46,11 +46,7 @@ class App extends Component {
             {/* should review and confirmation be protected? or maybe error if they don't exist */}
             <Route exact path="/event-review" component={EventReview} />
             <Route exact path="/event-confirmation" component={EventConfirmation} />
-
-            {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/home will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
-            Even though it seems like they are different pages, the user is always on localhost:3000/home */}
+            {/* protected routes */}
             <ProtectedRoute exact path="/admin" component={AdminDashboard} />
 
             {/* If none of the other routes matched, we will show a 404. */}
