@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class LoginPage extends Component {
+class AdminLogin extends Component {
   state = {
     username: '',
     password: '',
@@ -94,4 +94,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(AdminLogin);
