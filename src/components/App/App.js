@@ -8,7 +8,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 //these components are for all users
-import About from '../About/About';
+import Header from '../Header/Header';
 import Contact from '../Contact/Contact';
 import EventBoard from '../EventBoard/EventBoard';
 import EventForm from '../EventForm/EventForm';
@@ -35,8 +35,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Header />
           <Nav />
-          <About />
           <Switch>
             <Redirect exact from="/" to="/home" />
             {/* unprotected routes - all users can see without login */}

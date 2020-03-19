@@ -13,7 +13,7 @@ const EventBoard = () => (
 
   <div>
     <p>
-      contact info here
+      mpls.website is a community-led website. admins share the responsibility of verifying that posts are complete, local, non-commercial, and open to all. if you have concerns or questions or are interested in becoming an admin, feel free to reach out at ____________@_________
     </p>
   </div>
 );

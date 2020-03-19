@@ -1,9 +1,60 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+/* ------THIS-SHOULD-STAY-IN-APP.CSS---SITEWIDE-STYLES------ */
+
+/* universal box sizing from https://css-tricks.com/box-sizing/*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-.alert {
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 200px 8vw 0 8vw;
+    background-color: rgb(241, 235, 236);
+    text-align:center;
+}
+
+/* ----------HEADER-STLYES----------- */
+.Header {
+    background-color: plum;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 5vw;
+    width: 100vw;
+}
+
+/* ------------NAV-STYLES------------ */
+.Nav {
+    background-color: plum;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1em 5vw 3em 5vw;
+    width: 100vw;
+}
+
+.nav-link {
+    padding: 0 6vw;
+}
+
+/* ----------FOOTER-STYLES-----------*/
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+
+
+
+
+
+
+/* .alert {
     background-color: #ff4545;
     margin: 50px;
 }
@@ -34,10 +85,10 @@ input {
 
 .log-in:hover, .log-out:hover, .register:hover {
   background-color: #008183;
-}
+} */
 
 /* This line makes the "Register" and "Login" buttons look like links */
-.link-button {
+/* .link-button {
     background:none;
     color:inherit;
     border:none;
@@ -46,4 +97,4 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
-}
+} */

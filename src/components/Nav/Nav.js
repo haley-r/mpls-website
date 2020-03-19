@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => (
-  <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">mpls.website</h2>
-    </Link>
-    <div className="nav-right">
+  <div className="Nav">
       <Link className="nav-link" to="/admin">Admin</Link>
       <Link className="nav-link" to="/contact">Contact</Link>
-      <Link className="nav-link" to="/event-form">Submit Event</Link>
-    </div>
+      <Link className="nav-link" to="/event-form">Submit</Link>
   </div>
 );
 
