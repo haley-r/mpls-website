@@ -52,6 +52,70 @@ class EventBoard extends Component {
                         }
                     </article>
                 }
+                {this.props.admin.published &&
+                    <article className="published-events">
+                        <h2>Published Events</h2>
+                        <p>select 'details' to update or delete</p>
+                        {this.props.admin.published[0]
+                            ?
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Location</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.props.admin.published.map((event) =>
+                                        <tr key={event.id}>
+                                            <td>{event.title}</td>
+                                            <td>date</td>
+                                            <td>time</td>
+                                            <td>{event.location}</td>
+                                            <td><button>details...</button></td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                            :
+                            <p>no published events retrieved from database</p>
+                        }
+                    </article>
+                }
+                {this.props.admin.users &&
+                    <article className="users">
+                        <h2>Users</h2>
+                        <p>select 'update' to manage access</p>
+                        <p>only users with access levels below your own can be seen</p>
+
+                        {this.props.admin.users[0]
+                            ?
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Access Level</th>
+                                        <th>Manage Access</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.props.admin.users.map((user) =>
+                                        <tr key={user.id}>
+                                            <td>{user.username}</td>
+                                            <td>{user.access_level}</td>
+                                            <td><button>update</button></td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                            :
+                            <p>no users retrieved</p>
+                        }
+                    </article>
+                }
             </section>
         )
     }
