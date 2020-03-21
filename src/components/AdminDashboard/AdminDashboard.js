@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-//turn this into a class component, lol
+// This is one of our simplest components
+// It doesn't have local state, so it can be a function component.
+// It doesn't dispatch any redux actions or display any part of redux state
+// or even care what the redux state is, so it doesn't need 'connect()'
 
-const AdminDashboard = () => (
-    <p>this is where the admin dashboard will go. u can only see if logged in! I need to add a logout button (when logged in) somewhere- see starter code for that conditional rendering</p>
-);
+class EventBoard extends Component {
+    //upon mounting it will GET all events
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'FETCH_DASHBOARD' })
+    }
 
-export default AdminDashboard;
+
+
+    //local state will hold search input/parameters
+    render() {
+        return (
+            <section className="EventBoard">
+                <p>sup, in admin</p>
+                <p>{JSON.stringify(this.props.admin)}</p>
+                {/* {this.props.events[0] &&
+                    this.props.events.map((eventObject) =>
+                        <li key={eventObject.id}>{eventObject.title}</li>
+                    )
+                } */}
+            </section>
+        )
+    }
+}
+
+const putReduxStateOnProps = (reduxState) => ({ admin: reduxState.admin })
+export default connect(putReduxStateOnProps)(EventBoard);
