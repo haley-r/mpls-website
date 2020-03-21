@@ -12,20 +12,23 @@ router.get('/unpublished', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
-// router.get('/published', rejectUnauthenticated, (req, res) => {
-//   let queryText = 'SELECT * FROM "events" WHERE "published";';
-//   pool.query(queryText)
-//     .then((response) => res.send(response.rows))
-//     .catch(() => res.sendStatus(500));
-// });
+router.get('/published', rejectUnauthenticated, (req, res) => {
+  console.log('in admin router get /published');
+  let queryText = 'SELECT * FROM "events" WHERE "published";';
+  pool.query(queryText)
+    .then((response) => res.send(response.rows))
+    .catch(() => res.sendStatus(500));
+});
 
-// router.get('/users', rejectUnauthenticated, (req, res) => {
-//   console.log('req.user is', req.user)
-//   let queryText = 'SELECT * FROM "users";';
-//   pool.query(queryText)
-//     .then((response) => res.send(response.rows))
-//     .catch(() => res.sendStatus(500));
-// });
+router.get('/users', rejectUnauthenticated, (req, res) => {
+  console.log('in admin router get /users');
+
+  console.log('req.user is', req.user)
+  let queryText = 'SELECT * FROM "user";';
+  pool.query(queryText)
+    .then((response) => res.send(response.rows))
+    .catch(() => res.sendStatus(500));
+});
 
 
 module.exports = router;

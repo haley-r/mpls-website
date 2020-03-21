@@ -10,15 +10,17 @@ function* fetchDashboard(action) {
     };
 
   const unpublishedResponse = yield axios.get('/api/admin/unpublished', config);
-  // const publishedResponse = yield axios.get('/api/admin/published', config);
-  // const usersResponse = yield axios.get('/api/admin/users', config);
+  const publishedResponse = yield axios.get('/api/admin/published', config);
+  const usersResponse = yield axios.get('/api/admin/users', config);
 
   console.log(unpublishedResponse.data);
   // console.log(publishedResponse.data);
   // console.log(usersResponse.data);
 
   const dashboardData = {
-    unpublished: unpublishedResponse.data
+    unpublished: unpublishedResponse.data,
+    published: publishedResponse.data,
+    users: usersResponse.data
   }
   
   yield put({ type: 'SET_DASHBOARD', payload: dashboardData});
