@@ -4,11 +4,11 @@ import {HashRouter as Router, Route, Redirect, Switch,} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 //these components will show on all pages
+import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 //these components are for all users
-import Header from '../Header/Header';
 import Contact from '../Contact/Contact';
 import EventBoard from '../EventBoard/EventBoard';
 import EventForm from '../EventForm/EventForm';
@@ -26,10 +26,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 class App extends Component {
-  // does it need to do this to decide what shows? probably..
   // componentDidMount () {
   //   this.props.dispatch({type: 'FETCH_USER'})
   // }
+  //no need to try to fetch user on app load- dont need to be logged in
 
   render() {
     return (
