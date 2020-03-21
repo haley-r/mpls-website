@@ -21,11 +21,9 @@ router.get('/published', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/users', rejectUnauthenticated, (req, res) => {
-  console.log('in admin router get /users');
-
-  console.log('req.user is', req.user)
-  let queryText = 'SELECT * FROM "user";';
-  pool.query(queryText)
+  let queryText = 'SELECT * FROM "user" WHERE "access_level"<$1';
+  let values=[req.user.access_level]
+  pool.query(queryText, values)
     .then((response) => res.send(response.rows))
     .catch(() => res.sendStatus(500));
 });
