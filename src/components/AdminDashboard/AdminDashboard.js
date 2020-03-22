@@ -10,6 +10,11 @@ class EventBoard extends Component {
         this.props.dispatch({ type: 'FETCH_DASHBOARD' })
     }
 
+    goToDetails = (eventId) => {
+        console.log('hey, in goToDetails with event id:', eventId);
+        this.props.history.push(`/details/${eventId}`);
+    }
+
     //display the information
     render() {
         return (
@@ -38,7 +43,7 @@ class EventBoard extends Component {
                                             <td>date</td>
                                             <td>time</td>
                                             <td>{event.location}</td>
-                                            <td><button>details...</button></td>
+                                            <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -71,7 +76,7 @@ class EventBoard extends Component {
                                             <td>date</td>
                                             <td>time</td>
                                             <td>{event.location}</td>
-                                            <td><button>details...</button></td>
+                                            <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
                                 </tbody>

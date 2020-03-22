@@ -11,6 +11,7 @@ import Footer from '../Footer/Footer';
 //these components are for all users
 import Contact from '../Contact/Contact';
 import EventBoard from '../EventBoard/EventBoard';
+import EventDetails from '../EventDetails/EventDetails';
 import EventForm from '../EventForm/EventForm';
 import EventReview from '../EventReview/EventReview';
 import EventConfirmation from '../EventConfirmation/EventConfirmation';
@@ -41,6 +42,7 @@ class App extends Component {
             {/* unprotected routes - all users can see without login */}
             <Route exact path="/contact" component={Contact}/>
             <Route exact path="/home" component={EventBoard}/>
+            <Route path="/details/:eventId" component={EventDetails} />
             <Route exact path="/event-form" component={EventForm}/>
             {/* should review and confirmation be protected? or maybe error if they don't exist */}
             <Route exact path="/event-review" component={EventReview} />

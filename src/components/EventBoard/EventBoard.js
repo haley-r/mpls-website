@@ -10,13 +10,21 @@ class EventBoard extends Component{
     this.props.dispatch({type:'FETCH_EVENTS'})
   }
 
+  goToDetails=(eventId)=>{
+    console.log('hey, in goToDetails with event id:', eventId);
+    this.props.history.push(`/details/${eventId}`);
+  }
+
   //display the events that are stored in redux state and on props:
   render(){
     return( 
       <section className="EventBoard">
         {this.props.events[0] &&
           this.props.events.map((eventObject)=>
-            <li key={eventObject.id}>{eventObject.title}</li>
+            <li key={eventObject.id}>
+              {eventObject.title}
+              <button onClick={() => this.goToDetails(eventObject.id)}>see details</button>
+            </li>
           )
         }
       </section>
