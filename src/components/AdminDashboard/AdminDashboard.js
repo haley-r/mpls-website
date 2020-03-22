@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
-
 class EventBoard extends Component {
-    //upon mounting it will GET all events
+    //local state will hold search parameters, if search is implemented
+
+    //upon mounting it will GET all unpublished/published events and users
+    //which will be stored in the redux store and accessed via props
     componentDidMount = () => {
         this.props.dispatch({ type: 'FETCH_DASHBOARD' })
     }
 
-
-
-    //local state will hold search input/parameters
+    //display the information
     render() {
         return (
             <section className="AdminDashboard">
