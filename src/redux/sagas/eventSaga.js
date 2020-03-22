@@ -9,9 +9,17 @@ function* fetchEvents() {
   yield put ({ type: 'SET_EVENTS', payload: response.data});
 }
 
+function* postEvent(action) {
+  try {yield axios.post('/api/events', action.payload);}
+  catch (error) {console.log('Error with posting event:', error);}
+}
+
+
 //FETCH_EVENTS comes from EventDashboard loading
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS', fetchEvents);
+  yield takeLatest('POST_EVENT', postEvent);
+
 }
 
 export default eventSaga;

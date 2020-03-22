@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 class EventForm extends Component {
     //local state will hold input values
+    state = {
+        title: '',
+        description: '',
+    }
 
     //dispatch with bundled input values objext
-    createEvent = () => {
-        this.props.dispatch({type: 'POST_EVENT', payload: {title: 'fake title for test'}})
+    createEvent = (event) => {
+        event.preventDefault();
+        this.props.dispatch({type: 'POST_EVENT', payload: this.state})
+    }
+
+    //track input in various fields based on type
+    handleInput =(event, type)=> {
+        this.setState({
+            [type]: event.target.value
+        })
     }
 
     //display the events that are stored in redux state and on props:
@@ -15,7 +27,8 @@ class EventForm extends Component {
             <section className="submitEvent">
                 <h2>fill in these deets!</h2>
                 <form onSubmit={this.createEvent}>
-                    <input placeholder="name of event"/>
+                    <input onChange={(event)=>this.handleInput(event, 'title')}  placeholder="name of event"/>
+                    <input onChange={(event) => this.handleInput(event, 'description')}placeholder="description of event" />
                     <input
                         className="log-in"
                         type="submit"
@@ -28,4 +41,4 @@ class EventForm extends Component {
         )
     }
 }
-export default EventForm;
+export default connect()(EventForm);

@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    console.log('why the fuck will this not work');
-    const queryText = `INSERT INTO "events" ("title", "description") VALUES ('a fake event title', 'a test description');`;
-    pool.query(queryText)
+    const queryText = `INSERT INTO "events" ("title", "description") VALUES ($1, $2);`;
+    const values = [req.body.title, req.body.description];
+    pool.query(queryText, values)
         .then(() => res.sendStatus(201))
         .catch(() => res.sendStatus(500));
 });
