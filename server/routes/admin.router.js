@@ -24,5 +24,14 @@ router.get('/users', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });//gets users with access levels below current user
 
+router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
+  console.log('req.params', req.params);
+
+  let queryText = 'UPDATE "events" SET "published"=true WHERE "events"."id"=$1;';
+  let values = [req.params.eventId]
+  pool.query(queryText, values)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});//sets to published!
 
 module.exports = router;

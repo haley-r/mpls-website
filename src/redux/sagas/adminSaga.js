@@ -24,10 +24,19 @@ function* fetchDashboard(action) {
   catch (error) {
     console.log('admin get request failed', error);
   }
+}//combines 3 get requests to send bundled in an object to eventReducer
+
+function* publishEvent(action){
+  console.log('action.payload in published is', action.payload)
+  try { yield axios.put(`/api/admin/publish/${action.payload.id}`); }
+  catch (error) { console.log('Error with posting event:', error); }
 }
+
 //FETCH_DASHBOARD is dispatched from AdminDashboard upon mounting
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
+  yield takeLatest('SET_PUBLISHED', publishEvent);
 }
 
 export default adminSaga;
+
