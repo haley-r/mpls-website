@@ -15,7 +15,12 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+    console.log('why the fuck will this not work');
+    const queryText = `INSERT INTO "events" ("title", "description") VALUES ('a fake event title', 'a test description');`;
+    pool.query(queryText)
+        .then(() => res.sendStatus(201))
+        .catch(() => res.sendStatus(500));
 });
 
 module.exports = router;
+
