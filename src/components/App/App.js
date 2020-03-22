@@ -26,10 +26,9 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 class App extends Component {
-  // componentDidMount () {
-  //   this.props.dispatch({type: 'FETCH_USER'})
-  // }
-  //no need to try to fetch user on app load- dont need to be logged in
+  componentDidMount () {
+    this.props.dispatch({type: 'FETCH_USER'})
+  }
 
   render() {
     return (

@@ -3,8 +3,7 @@ const eventReducer = (state = {}, action) => {
     return action.payload;
   }
   return state;
-};
+};//eventReducer holds an array of all published events
+  //that any user will be able to see
 
-// user will be on the redux state at:
-// state.user
 export default eventReducer;
