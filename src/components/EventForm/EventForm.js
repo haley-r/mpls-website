@@ -25,7 +25,7 @@ class EventForm extends Component {
     render() {
         return (
             <section className="submitEvent">
-                <h2>fill in these deets!</h2>
+                <h2>fill in these details!</h2>
                 <form onSubmit={this.createEvent}>
                     <input onChange={(event)=>this.handleInput(event, 'title')}  placeholder="name of event"/>
                     <input onChange={(event) => this.handleInput(event, 'description')}placeholder="description of event" />

@@ -35,29 +35,41 @@ button {
     transition: background 250ms ease-in-out, 
                 transform 150ms ease;
 }
-button:hover,
+/* button:hover,
 button:focus {
     background: #0053ba;
 }
 button:focus {
     outline: 1px solid #fff;
     outline-offset: -4px;
-}
+}*/
 
 /* my sitewide styles */
-
+/* html {
+    background-color: rgb(18, 45, 95);
+} */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 200px 8vw 0 8vw;
-    background-color: rgb(240, 238, 230);
+    padding: 100px 8vw 100px 8vw;
+    margin: 0;
+    background-color: rgb(240, 224, 205);
     text-align:center;
     font-family: 'Sen', sans-serif;
 }
 
-h1 {
+section h1 {
     font-family: 'Shrikhand', cursive;
-    color: rgb(103, 186, 197);
-    padding: .25em 0 .75em 0;
+    font-size: 2.8em;
+    color: rgb(5, 175, 138);
+    line-height: 1em;
+    padding: .5em 0;
+    margin: 0;
+}
+
+h2{
+    color: rgb(214, 65, 19);
+    font-family: 'Shrikhand', cursive;
+    padding: 0;
     margin: 0;
 }
 
@@ -70,6 +82,36 @@ button {
     background-color: rgb(240, 238, 230);
     font-family: 'Sen', sans-serif;
 }
+/* ----------ARTICLE-STLYES----------- */
+article {
+    border: 6px solid rgb(238, 132, 45);
+    background-color: rgb(240, 238, 230);
+    color: rgb(105, 36, 9);
+    padding: 1em;
+    border-radius: 3em;
+    margin-bottom: 1em;
+}
+
+article p {
+    margin: 0;
+    padding: 0;
+}
+
+article button {
+    border-radius: .5em;
+    background-color:rgb(240, 238, 230);
+    font-weight: 700;
+    font-size: .8em;
+    color: rgb(5, 175, 138);
+}
+
+    article button:hover {
+        background-color: rgb(215, 236, 234);
+    }
+.date {
+    color: darkslateblue
+}    
+
 
 /* ----------HEADER-STLYES----------- */
 .Header {
@@ -93,15 +135,23 @@ button {
     transform: translate(-50%);
     padding: .5em 1em;
     margin: 0;
-    border-radius: 2em;
+    border-radius: 1em;
     font-size: 1em;
     border: 3px solid rgb(103, 186, 197);
-    background-color: rgb(129, 199, 202);
-    color:rgb(240, 238, 230);
+    background-color: rgb(170, 218, 219);
+    color: rgb(18, 45, 95);
 }
     #about-button:hover {
-        background-color: rgb(149, 197, 209);
+        background-color: rgb(198, 232, 233);
     }
+    
+.Header h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 1.2 em;
+    color: rgb(103, 186, 197);
+    padding: .25em 0 .75em 0;
+    margin: 0;
+}
 
 .Header p {
     padding: 3em;
@@ -109,7 +159,7 @@ button {
     font-size: .9em;
     color: rgb(18, 45, 95);
     background-color:rgb(240, 238, 230);
-    border: 3px solid rgb(103, 186, 197);
+    border: 6px solid rgb(103, 186, 197);
     border-radius: 2em;
 }
 

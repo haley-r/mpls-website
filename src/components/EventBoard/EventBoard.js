@@ -19,12 +19,16 @@ class EventBoard extends Component{
   render(){
     return( 
       <section className="EventBoard">
+        <h1>Upcoming Events</h1>
         {this.props.events[0] &&
           this.props.events.map((eventObject)=>
-            <li key={eventObject.id}>
-              {eventObject.title}
+            <article className="eventArticle"  key={eventObject.id}>
+              <h2>{eventObject.title}</h2>
+              <p>{eventObject.description}</p>
+              <p className="date">{eventObject.when}</p>
+              <p>{eventObject.location}</p>
               <button onClick={() => this.goToDetails(eventObject.id)}>see details</button>
-            </li>
+            </article>
           )
         }
       </section>
