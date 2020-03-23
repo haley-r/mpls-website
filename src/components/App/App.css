@@ -1,5 +1,23 @@
 /* ------THIS-SHOULD-STAY-IN-APP.CSS---SITEWIDE-STYLES------ */
 
+/* import possible fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&family=Oleo+Script:wght@400;700&family=Sen:wght@400;700;800&family=Shrikhand&family=UnifrakturMaguntia&display=swap');
+
+/* 
+    font-family: 'Oleo Script', cursive;
+
+    font-family: 'Sen', sans-serif;
+
+    font-family: 'Katibeh', cursive;
+
+    font-family: 'Shrikhand', cursive;
+
+    font-family: 'UnifrakturMaguntia', cursive;
+*/
+
+
+
 /* universal box sizing from https://css-tricks.com/box-sizing/*/
 html {
   box-sizing: border-box;
@@ -8,17 +26,55 @@ html {
   box-sizing: inherit;
 }
 
+/* modified 'button pal' by andy bell - removes default button styling, replaces with material ui-y effects */
+button {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+}
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+/* my sitewide styles */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 200px 8vw 0 8vw;
-    background-color: rgb(241, 235, 236);
+    background-color: rgb(240, 238, 230);
     text-align:center;
+    font-family: 'Sen', sans-serif;
+}
+
+h1 {
+    font-family: 'Shrikhand', cursive;
+    color: rgb(103, 186, 197);
+    padding: .25em 0 .75em 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    background-color: rgb(240, 238, 230);
+    font-family: 'Sen', sans-serif;
 }
 
 /* ----------HEADER-STLYES----------- */
 .Header {
-    background-color: plum;
+    background-color: rgb(18, 45, 95);
+    color: rgb(240, 238, 230);
     position: fixed;
     top: 0;
     left: 0;
@@ -26,9 +82,41 @@ body {
     width: 100vw;
 }
 
+.hide {
+    display: none;
+}
+
+#about-button {
+    position: absolute;
+    bottom: -1.3em;
+    left: 50%;
+    transform: translate(-50%);
+    padding: .5em 1em;
+    margin: 0;
+    border-radius: 2em;
+    font-size: 1em;
+    border: 3px solid rgb(103, 186, 197);
+    background-color: rgb(129, 199, 202);
+    color:rgb(240, 238, 230);
+}
+    #about-button:hover {
+        background-color: rgb(149, 197, 209);
+    }
+
+.Header p {
+    padding: 3em;
+    margin: 0 10vw 5em 10vw;
+    font-size: .9em;
+    color: rgb(18, 45, 95);
+    background-color:rgb(240, 238, 230);
+    border: 3px solid rgb(103, 186, 197);
+    border-radius: 2em;
+}
+
 /* ------------NAV-STYLES------------ */
 .Nav {
-    background-color: plum;
+    background-color: rgb(18, 45, 95);
+    color: rgb(240, 238, 230);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -43,7 +131,9 @@ body {
 /* ----------FOOTER-STYLES-----------*/
 footer {
     position: fixed;
-    bottom: 0;
+    color: rgb(129, 199, 202);
+    font-size: .75em;
+    bottom: 10px;
     left: 50%;
     transform: translatex(-50%);
 }
