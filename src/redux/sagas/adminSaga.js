@@ -32,10 +32,17 @@ function* publishEvent(action){
   catch (error) { console.log('Error with posting event:', error); }
 }
 
+function* deleteEvent(action) {
+  console.log('action.payload in delete event is', action.payload)
+  try { yield axios.delete(`/api/admin/delete/${action.payload.id}`); }
+  catch (error) { console.log('Error with posting event:', error); }
+}
+
 //FETCH_DASHBOARD is dispatched from AdminDashboard upon mounting
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
   yield takeLatest('SET_PUBLISHED', publishEvent);
+  yield takeLatest('DELETE_SELECTED', deleteEvent);
 }
 
 export default adminSaga;

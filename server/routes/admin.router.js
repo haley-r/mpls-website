@@ -25,13 +25,20 @@ router.get('/users', rejectUnauthenticated, (req, res) => {
 });//gets users with access levels below current user
 
 router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
-  console.log('req.params', req.params);
-
   let queryText = 'UPDATE "events" SET "published"=true WHERE "events"."id"=$1;';
   let values = [req.params.eventId]
   pool.query(queryText, values)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(500));
 });//sets to published!
+
+router.delete('/delete/:eventId', rejectUnauthenticated, (req, res) => {
+  let queryText = 'DELETE FROM "events" WHERE "id"=$1;';
+  let values = [req.params.eventId]
+  pool.query(queryText, values)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});//deletes selected event
+
 
 module.exports = router;
