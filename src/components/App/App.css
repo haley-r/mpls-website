@@ -188,6 +188,14 @@ footer {
     transform: translatex(-50%);
 }
 
+/* ----------EVENT-FORM-STYLES-----------*/
+label {
+    display: block;
+}
+input, textarea {
+    display: block;
+    width: 100%;
+}
 
 
 
