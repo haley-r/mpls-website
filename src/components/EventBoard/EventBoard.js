@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class EventBoard extends Component{
   //local state will hold search input/parameters (eventually?)
@@ -25,7 +26,9 @@ class EventBoard extends Component{
             <article className="eventArticle"  key={eventObject.id}>
               <h2>{eventObject.title}</h2>
               <p>{eventObject.description}</p>
-              <p className="date">{eventObject.when}</p>
+              {/* conditional to show "today" or "tomorrow" could go here */}
+              <p className="date">{moment(eventObject.when).format('dddd')}, {moment(eventObject.when).format('MMMM')} {moment(eventObject.when).format('D')}</p>
+              <p className="date">{moment(eventObject.when).format('h:mm a')}</p>
               <p>{eventObject.location}</p>
               <button onClick={() => this.goToDetails(eventObject.id)}>see details</button>
             </article>
