@@ -5,13 +5,13 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/unpublished', rejectUnauthenticated, (req, res) => {
-  let queryText = 'SELECT * FROM "events" WHERE NOT "published";';
+  let queryText = 'SELECT * FROM "events" WHERE NOT "published" ORDER BY "startTime";';
   pool.query(queryText)
     .then((response) => res.send(response.rows))
     .catch(() => res.sendStatus(500));
 });//gets unpublished events
 router.get('/published', rejectUnauthenticated, (req, res) => {
-  let queryText = 'SELECT * FROM "events" WHERE "published";';
+  let queryText = 'SELECT * FROM "events" WHERE "published" ORDER BY "startTime";';
   pool.query(queryText)
     .then((response) => res.send(response.rows))
     .catch(() => res.sendStatus(500));

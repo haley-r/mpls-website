@@ -7,10 +7,10 @@ class EventForm extends Component {
     state = {
         name: '',
         shortDescription: '',
-        startDate: null,
-        startTime: null,
-        endDate: null,
-        endTime: null,
+        startDate: '',
+        startTime: '',
+        endDate: '',
+        endTime: '',
         location: '',
         fullDescription: '',
         posterLink: '',
@@ -29,10 +29,10 @@ class EventForm extends Component {
         this.setState({
             name: '',
             shortDescription: '',
-            startDate: null,
-            startTime: null,
-            endDate: null,
-            endTime: null,
+            startDate: '',
+            startTime: '',
+            endDate: '',
+            endTime: '',
             location: '',
             fullDescription: '',
             posterLink: '',
@@ -90,9 +90,9 @@ class EventForm extends Component {
                                 value={this.state.hostContact} onChange={(event) => this.handleInput(event, 'hostContact')}/>
                         <label htmlFor="contact-public">OK to publish contact info?</label>
                             <input type="radio" id="no" name="contact-public" value="false"/>
-                                <label for="no" className="radio-label">No</label>
+                                <label htmlFor="no" className="radio-label">No</label>
                             <input type="radio" id="yes" name="contact-public" value="true" />
-                                <label for="yes" className="radio-label">Yes</label>
+                                <label htmlFor="yes" className="radio-label">Yes</label>
                         <p className="sidenote">*required field</p>
                         <input className="input-button" type="submit" name="submit" value="submit event"/>
                 </form>

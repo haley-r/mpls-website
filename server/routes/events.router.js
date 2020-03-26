@@ -4,7 +4,7 @@ const router = express.Router();
 
 //select all events that are marked as published
 router.get('/', (req, res) => {
-    let queryText = 'SELECT "id","name","shortDescription", "startTime","endTime","location" FROM "events" WHERE "published";';
+    let queryText = 'SELECT "id","name","shortDescription", "startTime","endTime","location" FROM "events" WHERE "published" ORDER BY "startTime";';
     pool.query(queryText)
         .then((response) => res.send(response.rows))
         .catch(() => res.sendStatus(500));
