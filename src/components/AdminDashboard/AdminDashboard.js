@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class EventBoard extends Component {
     //local state will hold search parameters, if search is implemented
@@ -31,18 +32,18 @@ class EventBoard extends Component {
                                     <tr>
                                         <th>Name</th>
                                         <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Location</th>
+                                        {/* <th>Time</th> */}
+                                        {/* <th>Location</th> */}
                                         <th>Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {this.props.admin.unpublished.map((event)=>
                                         <tr key={event.id}>
-                                            <td>{event.title}</td>
-                                            <td>date</td>
-                                            <td>time</td>
-                                            <td>{event.location}</td>
+                                            <td>{event.name}</td>
+                                            <td>{moment(event.startTime).format('M/D')}</td>
+                                            {/* <td>time</td> */}
+                                            {/* <td>{event.location}</td> */}
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
@@ -64,18 +65,18 @@ class EventBoard extends Component {
                                     <tr>
                                         <th>Name</th>
                                         <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Location</th>
+                                        {/* <th>Time</th> */}
+                                        {/* <th>Location</th> */}
                                         <th>Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {this.props.admin.published.map((event) =>
                                         <tr key={event.id}>
-                                            <td>{event.title}</td>
-                                            <td>date</td>
-                                            <td>time</td>
-                                            <td>{event.location}</td>
+                                            <td>{event.name}</td>
+                                            <td>{moment(event.startTime).format('M/D')}</td>
+                                            {/* <td>time</td> */}
+                                            {/* <td>{event.location}</td> */}
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
