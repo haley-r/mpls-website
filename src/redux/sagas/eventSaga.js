@@ -8,6 +8,14 @@ function* fetchEvents() {
   yield put ({ type: 'SET_EVENTS', payload: response.data});
 }
 
+function* fetchDetails(action) {
+  //use event router to get data- the action.payload is the id of event you want details for
+  const response = yield axios.get(`/api/events/${action.payload}`);
+  console.log('response from fetchDetails is', response);
+  //then send what comes back to the event reducer with SET_DETAILS
+  yield put({ type: 'SET_DETAILS', payload: response.data });
+}
+
 function* postEvent(action) {
   //attempt post from server, if it doesn't work console log the error
   try {yield axios.post('/api/events', action.payload);}
@@ -17,6 +25,7 @@ function* postEvent(action) {
 //FETCH_EVENTS comes from EventDashboard loading
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS', fetchEvents);
+  yield takeLatest('FETCH_DETAILS', fetchDetails);
   yield takeLatest('POST_EVENT', postEvent);
 
 }

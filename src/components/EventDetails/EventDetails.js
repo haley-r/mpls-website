@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class EventDetails extends Component {
-    //upon mounting it will GET all published events (unprotected route)
-    // componentDidMount = () => {
-    //     this.props.dispatch({ type: 'FETCH_EVENTS' })
-    // }
-
+    // upon mounting it will GET details for the single event at the id in the route
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: this.props.match.params.eventId })
+    }
     backToMain =()=> {
         this.props.history.push('/');
     }
-
     dispatchPublish=(eventId)=> {
         this.props.dispatch({type: 'SET_PUBLISHED', payload: {id: eventId}});
     }
-
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
     }
@@ -34,7 +31,7 @@ class EventDetails extends Component {
                         <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>
                 :
-                <p>admins can edit, delete, or publish events. link to login?</p>
+                <p>admins can edit, delete, or publish events. (link to login here eventually)</p>
                 }
             </section>
         )
