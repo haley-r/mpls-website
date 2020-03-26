@@ -22,15 +22,18 @@ class EventBoard extends Component{
       <section className="EventBoard">
         <h1>Upcoming Events</h1>
         {this.props.events[0] &&
-          this.props.events.map((eventObject)=>
-            <article className="eventArticle"  key={eventObject.id}>
-              <h2>{eventObject.title}</h2>
-              <p>{eventObject.description}</p>
+          this.props.events.map((event)=>
+            <article className="eventArticle"  key={event.id}>
+              <h2>{event.name}</h2>
+              <p>{event.shortDescription}</p>
               {/* conditional to show "today" or "tomorrow" could go here */}
-              <p className="date">{moment(eventObject.when).format('dddd')}, {moment(eventObject.when).format('MMMM')} {moment(eventObject.when).format('D')}</p>
-              <p className="date">{moment(eventObject.when).format('h:mm a')}</p>
-              <p>{eventObject.location}</p>
-              <button onClick={() => this.goToDetails(eventObject.id)}>see details</button>
+              {/* also conditionals to not repeat date if same date - lots of possibilities */}
+              <p className="date">{moment(event.startTime).format('ddd M/D')} at {moment(event.startTime).format('h:mm a')}</p>
+              {event.endTime != null &&
+                <p className="date">{moment(event.endTime).format('- ddd M/D')} at {moment(event.endTime).format('h:mm a')}</p>
+              }
+              <p>{event.location}</p>
+              <button onClick={() => this.goToDetails(event.id)}>see details</button>
             </article>
           )
         }

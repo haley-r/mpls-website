@@ -26,20 +26,20 @@ class EventForm extends Component {
         //dispatch post action
         this.props.dispatch({type: 'POST_EVENT', payload: this.state})
         //reset state
-        // this.setState({
-        //     name: '',
-        //     shortDescription: '',
-        //     startDate: null,
-        //     startTime: null,
-        //     endDate: null,
-        //     endTime: null,
-        //     location: '',
-        //     fullDescription: '',
-        //     posterLink: '',
-        //     updates: '',
-        //     hostContact: '',
-        //     hostContactPublic: false
-        // })
+        this.setState({
+            name: '',
+            shortDescription: '',
+            startDate: null,
+            startTime: null,
+            endDate: null,
+            endTime: null,
+            location: '',
+            fullDescription: '',
+            posterLink: '',
+            updates: '',
+            hostContact: '',
+            hostContactPublic: false
+        })
     }
 
     //track input in various fields based on type

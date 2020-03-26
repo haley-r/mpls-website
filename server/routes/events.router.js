@@ -4,16 +4,13 @@ const router = express.Router();
 
 //select all events that are marked as published
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM "events" WHERE "published";';
+    let queryText = 'SELECT "id","name","shortDescription", "startTime","endTime","location" FROM "events" WHERE "published";';
     pool.query(queryText)
         .then((response) => res.send(response.rows))
         .catch(() => res.sendStatus(500));
 });
 
-
-/**
- * POST route template
- */
+//post info gathered from form into database
 router.post('/', (req, res) => {
     let event=req.body;
     const queryText = 
