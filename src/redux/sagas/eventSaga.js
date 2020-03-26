@@ -11,9 +11,8 @@ function* fetchEvents() {
 function* fetchDetails(action) {
   //use event router to get data- the action.payload is the id of event you want details for
   const response = yield axios.get(`/api/events/${action.payload}`);
-  console.log('response from fetchDetails is', response);
   //then send what comes back to the event reducer with SET_DETAILS
-  yield put({ type: 'SET_DETAILS', payload: response.data });
+  yield put({ type: 'SET_DETAILS', payload: response.data[0] });
 }
 
 function* postEvent(action) {
