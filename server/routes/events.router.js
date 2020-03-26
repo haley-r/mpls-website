@@ -15,12 +15,31 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-    const queryText = `INSERT INTO "events" ("title", "description") VALUES ($1, $2);`;
-    const values = [req.body.title, req.body.description];
+    let event=req.body;
+    const queryText = 
+        `INSERT INTO "events" 
+        ("name", "short-description", "start-time", "end-time", "location",
+        "full-description", "poster-link", "updates", "host-contact", "host-contact-public")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
+    const values = [
+        event.name,
+        event.shortDescription,
+        `${event.startDate} ${event.startTime}:00`,
+        `${event.endDate} ${event.endTime}:00`,
+        event.location,
+        event.fullDescription,
+        event.posterLink,
+        event.updates,
+        event.hostContact,
+        event.hostContactPublic
+    ];
     pool.query(queryText, values)
         .then(() => res.sendStatus(201))
         .catch(() => res.sendStatus(500));
 });
 
 module.exports = router;
+
+
+
 
