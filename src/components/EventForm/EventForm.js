@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 class EventForm extends Component {
     //local state will hold input values for all fields
@@ -17,6 +16,24 @@ class EventForm extends Component {
         updates: '',
         hostContact: '',
         hostContactPublic: false
+    }
+
+    //autopopulate with hidden click
+    autoPopulate=()=>{
+        this.setState({
+            name: 'JelloFest 2020',
+            shortDescription: 'an art event for jello enthusiasts',
+            startDate: '2020-08-07',
+            startTime: '19:30',
+            endDate: '2020-08-07',
+            endTime: '23:59',
+            location: 'My House, 123 10th Ave',
+            fullDescription: 'A jello potluck/art event- all guests can bring a jello of some sort! the categories are tastiest, most creative, jiggliest, most disturbing, and best of show.',
+            posterLink: 'https://i.insider.com/4fbe4b636bb3f7d307000003?width=600&format=jpeg&auto=webp',
+            updates: '@JelloFestOfficial on instagram',
+            hostContact: 'DM the instagram account',
+            hostContactPublic: true
+        })
     }
 
     //dispatch with bundled input values object (this.state) as payload
@@ -40,7 +57,7 @@ class EventForm extends Component {
     render() {
         return (
             <section className="enterEvent">
-                <h2>fill in these details!</h2>
+                <h2 onClick={this.autoPopulate}>fill in these details!</h2>
                 <form onSubmit={this.createEvent}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"

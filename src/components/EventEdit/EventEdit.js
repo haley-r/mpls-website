@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 class EventEdit extends Component {
     //local state will hold input values for all fields
@@ -79,7 +78,7 @@ class EventEdit extends Component {
                     <input type="radio" id="yes" name="contact-public" value="true" />
                     <label htmlFor="yes" className="radio-label">Yes</label>
                     <p className="sidenote">*required field</p>
-                    <input className="input-button" type="submit" name="submit" value="submit event" />
+                    <input className="input-button" type="submit" name="submit" value="confirm changes" />
                 </form>
             </section>          
         )
