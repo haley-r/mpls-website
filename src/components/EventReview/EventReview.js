@@ -10,26 +10,23 @@ class EventDetails extends Component {
     backToMain = () => {
         this.props.history.push('/');
     }
-    dispatchPublish = (eventId) => {
-        this.props.dispatch({ type: 'SET_PUBLISHED', payload: { id: eventId } });
-    }
-    dispatchDelete = (eventId) => {
-        this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
+    editEvent = () => {
+        this.props.history.push('/post-event-edit');
     }
 
     //display the events that are stored in redux state and on props:
     render() {
         return (
             <section className="EventDetails">
+                <h2>does this look right?</h2>
                 <h1>{this.props.tempEvent.name}</h1>
                 <h2>{this.props.tempEvent.shortDescription}</h2>
                 <p>{this.props.tempEvent.fullDescription}</p>
 
                 <p>{this.props.tempEvent.location}</p>
-                <p className="date">{moment(this.props.tempEvent.startTime).format('ddd M/D')} at {moment(this.props.tempEvent.startTime).format('h:mm a')}</p>
-                {this.props.tempEvent.endTime != null &&
-                    <p className="date">{moment(this.props.tempEvent.endTime).format('- ddd M/D')} at {moment(this.props.tempEvent.endTime).format('h:mm a')}</p>
-                }
+                <p className="date">{moment(this.props.tempEvent.startDate).format('ddd M/D')} at {moment(this.props.tempEvent.startTime, 'HH:mm:ss').format('h:mm a')}</p>
+                   {this.props.tempEvent.endTime != null &&
+                       <p className="date">{moment(this.props.tempEvent.endDate).format('- ddd M/D')} at {moment(this.props.tempEvent.endTime, 'HH:mm:ss').format('h:mm a')}</p>}
                 {this.props.tempEvent.posterLink !== '' &&
                     <img src={this.props.tempEvent.posterLink} alt="poster would be linked in here with valid url" />
                 }
@@ -38,6 +35,8 @@ class EventDetails extends Component {
                 {this.props.tempEvent.hostContactPublic &&
                     <p>host contact: {this.props.tempEvent.hostContact}</p>
                 }
+                <button onClick={this.editEvent}>Edit</button>
+                <button>Looks Good!</button>
             </section>
         )
     }

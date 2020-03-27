@@ -15,10 +15,10 @@ function* fetchDetails(action) {
   yield put({ type: 'SET_DETAILS', payload: response.data[0] });
 }
 
-function* stageEvent (action) {
-  //put the entered event data into a reducer so user can review
-  yield put({ type: 'SET_STAGED_EVENT', payload: action.payload });
-}
+// function* stageEvent (action) {
+//   //put the entered event data into a reducer so user can review
+//   yield put({ type: 'SET_STAGED_EVENT', payload: action.payload });
+// }
 
 function* postEvent(action) {
   //attempt post from server, if it doesn't work console log the error
@@ -30,8 +30,8 @@ function* postEvent(action) {
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS', fetchEvents);
   yield takeLatest('FETCH_DETAILS', fetchDetails);
+  // yield takeLatest('STAGE_EVENT', stageEvent);
   yield takeLatest('POST_EVENT', postEvent);
-
 }
 
 export default eventSaga;

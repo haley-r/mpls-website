@@ -15,6 +15,7 @@ import EventDetails from '../EventDetails/EventDetails';
 import EventDisclaimer from '../EventDisclaimer/EventDisclaimer';
 import EventForm from '../EventForm/EventForm';
 import EventReview from '../EventReview/EventReview';
+import EventEdit from '../EventEdit/EventEdit';
 import EventConfirmation from '../EventConfirmation/EventConfirmation';
   //also, EventDetails, but I think that'll be imported in other components
 
@@ -47,6 +48,7 @@ class App extends Component {
             <Route exact path="/post-event-1" component={EventDisclaimer}/>
             <Route exact path="/post-event-2" component={EventForm} />
             {/* should review and confirmation be protected? or maybe error if they don't exist */}
+            <Route exact path="/post-event-edit" component={EventEdit} />
             <Route exact path="/post-event-3" component={EventReview} />
             <Route exact path="/post-event-4" component={EventConfirmation} />
             {/* protected routes */}

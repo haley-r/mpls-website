@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-class EventForm extends Component {
+class EventEdit extends Component {
     //local state will hold input values for all fields
     state = {
-        name: '',
+        name: this.props.tempEvent.name,
         shortDescription: '',
         startDate: '',
         startTime: '',
@@ -86,4 +86,4 @@ class EventForm extends Component {
     }
 }
 const putReduxStateOnProps = (reduxState) => ({ tempEvent: reduxState.tempEvent })
-export default connect(putReduxStateOnProps)(EventForm);
+export default connect(putReduxStateOnProps)(EventEdit);
