@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
     let event=req.body;
     const queryText = 
         `INSERT INTO "events" 
-        ("name", "short-description", "start-time", "end-time", "location",
-        "full-description", "poster-link", "updates", "host-contact", "host-contact-public")
+        ("name", "shortDescription", "startTime", "endTime", "location",
+        "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic")
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
     const values = [
         event.name,

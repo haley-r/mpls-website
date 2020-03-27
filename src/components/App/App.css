@@ -116,6 +116,10 @@ input, textarea {
     margin-left: 50px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 /* ----------FORM_AND_ARTICLE-STLYES----------- */
 form, article {
     border: 6px solid rgb(238, 132, 45);
