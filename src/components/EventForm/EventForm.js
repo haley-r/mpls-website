@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class EventForm extends Component {
     //local state will hold input values for all fields
@@ -62,10 +63,7 @@ class EventForm extends Component {
             input:{
                 ...this.state.input,
                 [type]: event.target.value
-            }
-
-
-            
+            }            
         })
     }
 
@@ -76,8 +74,6 @@ class EventForm extends Component {
                 {this.state.mode==="enter" &&
                 <section className="enterEvent">
                     <h2>fill in these details!</h2>
-                    <p>Since anyone can make an event submission without making an account, you won't be able to edit your post after submitting it. Think of it like making a poster to leave around town.</p>
-                    <p>An admin will check your post for completion and compliance with general community standards (see 'about') before publishing it.</p>
                     <form onSubmit={this.createEvent}>
                         <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                         <input required type="text" id="name-input"
@@ -121,8 +117,30 @@ class EventForm extends Component {
                 </section>
                 }
                 {this.state.mode==="review" &&
-                    <p>you're in edit mode
-                    {JSON.stringify(this.state.input)}</p>
+                    <section className="reviewEvent">
+                    <h2>does this look right?</h2>
+                    <h1>{this.state.input.name}</h1>
+                    <h2>{this.state.input.shortDescription}</h2>
+                    <p>{this.state.input.fullDescription}</p>
+
+                    <p>{this.state.input.location}</p>
+                    <p className="date">{moment(this.state.input.startDate).format('ddd M/D')} at
+                    <p>{moment(this.state.input.startTime, 'HH:mm:ss').format('h:mm a')}</p>
+                    </p>
+                    {this.state.input.endTime != null &&
+                        <p className="date">{moment(this.state.input.endDate).format('- ddd M/D')} at
+                    <p>{moment(this.state.input.startTime, 'HH:mm:ss').format('h:mm a')}</p>
+                    </p>
+                    }
+                    {this.state.input.posterLink !== '' &&
+                        <img src={this.state.input.posterLink} alt="poster would be linked in here with valid url" />
+                    }
+                    <p>for updates: {this.state.input.updates}</p>
+
+                    {this.state.input.hostContactPublic &&
+                        <p>host contact: {this.state.input.hostContact}</p>
+                    }
+                    </section>
                 }
             </div>
         )
