@@ -14,7 +14,10 @@ class EventDetails extends Component {
         this.props.history.push('/post-event-edit');
     }
     postEvent=()=>{
+        //post the event to the database
         this.props.dispatch({ type: 'POST_EVENT', payload: this.props.tempEvent})
+        //go to the confirmation page
+        this.props.history.push('/post-event-4');
     }
 
     //display the events that are stored in redux state and on props:

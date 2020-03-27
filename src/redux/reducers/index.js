@@ -3,6 +3,7 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import tempEvent from './tempEventReducer';
+import confirmation from './confirmationReducer';
 import event from './eventReducer';
 import details from './detailsReducer';
 import admin from './adminReducer';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   tempEvent,
+  confirmation,
   event,
   details,
   admin,
