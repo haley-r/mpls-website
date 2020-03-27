@@ -150,6 +150,9 @@ form button, article button, .input-button {
     color: rgb(18, 45, 95);
 }    
 
+img {
+    width: 80%;
+}
 
 /* ----------HEADER-STLYES----------- */
 .Header {

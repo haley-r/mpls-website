@@ -32,9 +32,9 @@ class EventDetails extends Component {
                     <p>{this.props.tempEvent.fullDescription}</p>
 
                     <p>{this.props.tempEvent.location}</p>
-                    <p className="date">{moment(this.props.tempEvent.startDate).format('ddd M/D')} at {moment(this.props.tempEvent.startTime, 'HH:mm:ss').format('h:mm a')}</p>
+                    <p className="date">Start: {moment(this.props.tempEvent.startDate).format('ddd M/D')} at {moment(this.props.tempEvent.startTime, 'HH:mm:ss').format('h:mm a')}</p>
                     {this.props.tempEvent.endTime != null &&
-                        <p className="date">{moment(this.props.tempEvent.endDate).format('- ddd M/D')} at {moment(this.props.tempEvent.endTime, 'HH:mm:ss').format('h:mm a')}</p>}
+                        <p className="date">End: {moment(this.props.tempEvent.endDate).format('ddd M/D')} at {moment(this.props.tempEvent.endTime, 'HH:mm:ss').format('h:mm a')}</p>}
                     {this.props.tempEvent.posterLink !== '' &&
                         <img src={this.props.tempEvent.posterLink} alt="poster would be linked in here with valid url" />
                     }
