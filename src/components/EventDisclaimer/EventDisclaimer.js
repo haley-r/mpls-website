@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import moment from 'moment';
 
 class EventFormPage1 extends Component {
     //go to next page in event form
     goToNextPage=()=>{
-        console.log('hi from goToNextPage');
+        this.props.history.push('/post-event-2');
     }
 
     //display the events that are stored in redux state and on props:
     render() {
         return (
             <section className="submitEvent">
-                <h1>Post an Event</h1>
                 <p>mpls.website is more like a community bulletin board than other event sites. It's a simple tool for finding each other.</p>
                 <p>When posting an event, think of it like posting a flyer. Include all necessary information, and a way for attendees to find updates or more details.</p>
                 <h2>Events must be:</h2>

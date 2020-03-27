@@ -12,6 +12,7 @@ import Footer from '../Footer/Footer';
 import Contact from '../Contact/Contact';
 import EventBoard from '../EventBoard/EventBoard';
 import EventDetails from '../EventDetails/EventDetails';
+import EventDisclaimer from '../EventDisclaimer/EventDisclaimer';
 import EventForm from '../EventForm/EventForm';
 import EventReview from '../EventReview/EventReview';
 import EventConfirmation from '../EventConfirmation/EventConfirmation';
@@ -43,7 +44,9 @@ class App extends Component {
             <Route exact path="/contact" component={Contact}/>
             <Route exact path="/home" component={EventBoard}/>
             <Route path="/details/:eventId" component={EventDetails} />
-            <Route exact path="/event-form" component={EventForm}/>
+            <Route exact path="/post-event-1" component={EventDisclaimer}/>
+            <Route exact path="/post-event-2" component={EventForm} />
+
             {/* should review and confirmation be protected? or maybe error if they don't exist */}
             <Route exact path="/event-review" component={EventReview} />
             <Route exact path="/event-confirmation" component={EventConfirmation} />

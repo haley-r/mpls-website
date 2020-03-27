@@ -8,7 +8,7 @@ const Nav = (props) => (
   <div className="Nav">
       <Link className="nav-link" to="/admin">Admin</Link>
       <Link className="nav-link" to="/contact">Contact</Link>
-      <Link className="nav-link" to="/event-form">Submit</Link>
+      <Link className="nav-link" to="/post-event-1">Submit</Link>
   </div>
 );
 
