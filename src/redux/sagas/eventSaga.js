@@ -15,6 +15,11 @@ function* fetchDetails(action) {
   yield put({ type: 'SET_DETAILS', payload: response.data[0] });
 }
 
+function* stageEvent (action) {
+  //put the entered event data into a reducer so user can review
+  yield put({ type: 'SET_STAGED_EVENT', payload: action.payload });
+}
+
 function* postEvent(action) {
   //attempt post from server, if it doesn't work console log the error
   try {yield axios.post('/api/events', action.payload);}

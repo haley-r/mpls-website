@@ -46,10 +46,9 @@ class App extends Component {
             <Route path="/details/:eventId" component={EventDetails} />
             <Route exact path="/post-event-1" component={EventDisclaimer}/>
             <Route exact path="/post-event-2" component={EventForm} />
-
             {/* should review and confirmation be protected? or maybe error if they don't exist */}
-            <Route exact path="/event-review" component={EventReview} />
-            <Route exact path="/event-confirmation" component={EventConfirmation} />
+            <Route exact path="/post-event-3" component={EventReview} />
+            <Route exact path="/post-event-4" component={EventConfirmation} />
             {/* protected routes */}
             <ProtectedRoute exact path="/admin" component={AdminDashboard} />
 
