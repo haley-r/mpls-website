@@ -6,17 +6,17 @@ class EventEdit extends Component {
     //local state will hold input values for all fields
     state = {
         name: this.props.tempEvent.name,
-        shortDescription: '',
-        startDate: '',
-        startTime: '',
-        endDate: '',
-        endTime: '',
-        location: '',
-        fullDescription: '',
-        posterLink: '',
-        updates: '',
-        hostContact: '',
-        hostContactPublic: false
+        shortDescription: this.props.tempEvent.shortDescription,
+        startDate: this.props.tempEvent.startDate,
+        startTime: this.props.tempEvent.startTime,
+        endDate: this.props.tempEvent.endDate,
+        endTime: this.props.tempEvent.endTime,
+        location: this.props.tempEvent.location,
+        fullDescription: this.props.tempEvent.fullDescription,
+        posterLink: this.props.tempEvent.posterLink,
+        updates: this.props.tempEvent.updates,
+        hostContact: this.props.tempEvent.hostContact,
+        hostContactPublic: this.props.tempEvent.hostContactPublic
     }
 
     //dispatch with bundled input values object (this.state) as payload
@@ -40,7 +40,7 @@ class EventEdit extends Component {
     render() {
         return (
             <section className="enterEvent">
-                <h2>fill in these details!</h2>
+                <h2>change any field:</h2>
                 <form onSubmit={this.createEvent}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
