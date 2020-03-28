@@ -24,7 +24,6 @@ class AdminEdit extends Component {
         }
     }
 
-
     //dispatch with bundled input values object (this.state) as payload
     saveEdits = (event) => {
         //prevent form reload upon submission
@@ -35,7 +34,6 @@ class AdminEdit extends Component {
         this.props.history.push(`/admin/details/${this.props.match.params.eventId}`);
         //not sure if state needs to be cleared
     }
-
     //track input in various fields based on type
     handleInput = (event, type) => {
         this.setState({
@@ -88,13 +86,13 @@ class AdminEdit extends Component {
                     <input className="input-button" type="submit" name="submit" value="confirm edits" />
                 </form>
                 <div className="actionButtons">
-                    {this.props.details.published
+                    {/* {this.props.details.published
                         ?
                         <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>uppublish</button>
                         :
                         <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
                     }
-                    <button onClick={this.editMode}>edit</button>
+                    <button onClick={this.editMode}>edit</button> */}
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>
             </section>          

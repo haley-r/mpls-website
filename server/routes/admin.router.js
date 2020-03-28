@@ -27,7 +27,7 @@ router.get('/users', rejectUnauthenticated, (req, res) => {
 //select details for the specific event chosen by id
 router.get('/details/:id', (req, res) => {  
   //change this to not include host contact if not public
-  let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "startDateString", "startTimeString", "endDateString", "endTimeString","location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic", "published" FROM "events" WHERE "id"=$1;';
+  let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "startDateString", "startTimeString", "endDateString", "endTimeString","location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic", "published", "flagged" FROM "events" WHERE "id"=$1;';
   let values = [req.params.id];
   pool.query(queryText, values)
     .then((response) => res.send(response.rows))
@@ -41,7 +41,16 @@ router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
   pool.query(queryText, values)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(500));
-});//sets to published!
+});//sets to published or unpublished
+
+router.put('/flag/:eventId', rejectUnauthenticated, (req, res) => {
+  console.log('req.body:', req.body);
+  let queryText = 'UPDATE "events" SET "flagged"=$1 WHERE "events"."id"=$2;';
+  let values = [req.body.setTo, req.params.eventId]
+  pool.query(queryText, values)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});//sets to flagged or unflagged
 
 router.put('/update/:eventId', rejectUnauthenticated, (req, res) => {
   let event = req.body.event;

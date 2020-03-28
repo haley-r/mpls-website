@@ -31,6 +31,11 @@ function* publishEvent(action){
   catch (error) { console.log('Error with updating event:', error); }
 }
 
+function* flagEvent(action) {
+  try { yield axios.put(`/api/admin/flag/${action.payload.id}`, action.payload); }
+  catch (error) { console.log('Error with updating event:', error); }
+}
+
 function* updateEvent(action){
   try { yield axios.put(`/api/admin/update/${action.payload.id}`, action.payload); }
   catch (error) { console.log('Error with updating event:', error); }
@@ -45,6 +50,7 @@ function* deleteEvent(action) {
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
   yield takeLatest('SET_PUBLISHED', publishEvent);
+  yield takeLatest('SET_FLAGGED', flagEvent);
   yield takeLatest('UPDATE_EVENT', updateEvent);
   yield takeLatest('DELETE_SELECTED', deleteEvent);
 }

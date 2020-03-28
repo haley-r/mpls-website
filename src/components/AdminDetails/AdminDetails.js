@@ -14,6 +14,11 @@ class EventDetails extends Component {
         else {this.props.dispatch({type: 'SET_PUBLISHED', payload: {id: eventId, setTo: true}});}
         window.location.reload(false);
     }
+    dispatchFlag = (eventId) => {
+        if (this.props.details.flagged) { this.props.dispatch({ type: 'SET_FLAGGED', payload: { id: eventId, setTo: false } }); }
+        else { this.props.dispatch({ type: 'SET_FLAGGED', payload: { id: eventId, setTo: true } }); }
+        window.location.reload(false);
+    }
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
     }
@@ -64,6 +69,12 @@ class EventDetails extends Component {
                         <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>uppublish</button>
                     :
                         <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    }
+                    {this.props.details.flagged
+                        ?
+                        <button onClick={() => this.dispatchFlag(this.props.match.params.eventId)}>unflag</button>
+                        :
+                        <button onClick={() => this.dispatchFlag(this.props.match.params.eventId)}>flag</button>
                     }
                     <button onClick={this.editMode}>edit</button>
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
