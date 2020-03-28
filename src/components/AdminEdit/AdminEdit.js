@@ -26,13 +26,13 @@ class AdminEdit extends Component {
 
 
     //dispatch with bundled input values object (this.state) as payload
-    createEvent = (event) => {
+    saveEdits = (event) => {
         //prevent form reload upon submission
         event.preventDefault();
         //send the state to the reducer
-        this.props.dispatch({type:'STAGE_EVENT', payload:this.state});
+        this.props.dispatch({ type: 'UPDATE_EVENT', payload: { id: this.props.match.params.eventId, event: this.state}});
         //go to next page
-        this.props.history.push('/post-event-3');
+        this.props.history.push(`/admin/details/${this.props.match.params.eventId}`);
         //not sure if state needs to be cleared
     }
 
@@ -47,7 +47,7 @@ class AdminEdit extends Component {
         return (
             <section className="enterEvent">
                 <h2>change any field:</h2>
-                <form onSubmit={this.createEvent}>
+                <form onSubmit={this.saveEdits}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
                         value={this.state.name} onChange={(event) => this.handleInput(event, 'name')} />
@@ -85,7 +85,7 @@ class AdminEdit extends Component {
                     <input type="radio" id="yes" name="contact-public" value="true" />
                     <label htmlFor="yes" className="radio-label">Yes</label>
                     <p className="sidenote">*required field</p>
-                    <input className="input-button" type="submit" name="submit" value="confirm changes" />
+                    <input className="input-button" type="submit" name="submit" value="confirm edits" />
                 </form>
                 <div className="actionButtons">
                     {this.props.details.published

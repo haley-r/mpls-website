@@ -27,8 +27,12 @@ function* fetchDashboard(action) {
 }//combines 3 get requests to send bundled in an object to eventReducer
 
 function* publishEvent(action){
-  console.log('action.payload in published is', action.payload)
   try { yield axios.put(`/api/admin/publish/${action.payload.id}`, action.payload); }
+  catch (error) { console.log('Error with updating event:', error); }
+}
+
+function* updateEvent(action){
+  try { yield axios.put(`/api/admin/update/${action.payload.id}`, action.payload); }
   catch (error) { console.log('Error with updating event:', error); }
 }
 
@@ -41,6 +45,7 @@ function* deleteEvent(action) {
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
   yield takeLatest('SET_PUBLISHED', publishEvent);
+  yield takeLatest('UPDATE_EVENT', updateEvent);
   yield takeLatest('DELETE_SELECTED', deleteEvent);
 }
 

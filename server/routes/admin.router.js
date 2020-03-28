@@ -43,6 +43,47 @@ router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });//sets to published!
 
+router.put('/update/:eventId', rejectUnauthenticated, (req, res) => {
+  let event = req.body.event;
+
+  let queryText = `UPDATE "events" SET 
+  "name" =$1, 
+  "shortDescription"=$2, 
+  "startTime"=$3, 
+  "endTime"=$4,
+  "startDateString"=$5, 
+  "startTimeString"=$6, 
+  "endDateString"=$7, 
+  "endTimeString"=$8, 
+  "location"=$9,
+  "fullDescription"=$10, 
+  "posterLink"=$11, 
+  "updates"=$12, 
+  "hostContact"=$13, 
+  "hostContactPublic"=$14
+  WHERE "events"."id"=$15;`;
+  let values = [
+    event.name,
+    event.shortDescription,
+    `${event.startDate} ${event.startTime}:00`,
+    `${event.endDate} ${event.endTime}:00`,
+    event.startDate,
+    event.startTime,
+    event.endDate,
+    event.endTime,
+    event.location,
+    event.fullDescription,
+    event.posterLink,
+    event.updates,
+    event.hostContact,
+    event.hostContactPublic,
+    req.params.eventId,
+  ];
+  pool.query(queryText, values)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});//updates all fields besides id, even if same.
+
 router.delete('/delete/:eventId', rejectUnauthenticated, (req, res) => {
   let queryText = 'DELETE FROM "events" WHERE "id"=$1;';
   let values = [req.params.eventId]
