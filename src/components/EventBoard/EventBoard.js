@@ -12,7 +12,6 @@ class EventBoard extends Component{
   }
 
   goToDetails=(eventId)=>{
-    console.log('hey, in goToDetails with event id:', eventId);
     this.props.history.push(`/details/${eventId}`);
   }
 

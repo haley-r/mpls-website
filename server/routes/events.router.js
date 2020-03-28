@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 //select details for the specific event chosen by id
 router.get('/:id', (req, res) => {
     //change this to not include host contact if not public
-    let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic" FROM "events" WHERE "id"=$1;';
+    let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic" FROM "events" WHERE "id"=$1 AND "published";';
     let values = [req.params.id];
     pool.query(queryText, values)
         .then((response) => res.send(response.rows))

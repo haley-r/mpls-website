@@ -9,10 +9,18 @@ function* fetchEvents() {
 }
 
 function* fetchDetails(action) {
-  //use event router to get data- the action.payload is the id of event you want details for
-  const response = yield axios.get(`/api/events/${action.payload}`);
-  //then send what comes back to the event reducer with SET_DETAILS
-  yield put({ type: 'SET_DETAILS', payload: response.data[0] });
+  //if there's a user, do a protected get in admin router
+  if (action.payload.user){
+    const response = yield axios.get(`/api/admin/details/${action.payload.eventId}`);
+    //then send what comes back to the event reducer with SET_DETAILS
+    yield put({ type: 'SET_DETAILS', payload: response.data[0] });
+  }
+  //if there's not a user, do an unprotected get in events router
+  else{ 
+    const response = yield axios.get(`/api/events/${action.payload.eventId}`);
+    //then send what comes back to the event reducer with SET_DETAILS
+    yield put({ type: 'SET_DETAILS', payload: response.data[0] });
+   }
 }
 
 // function* postEvent(action) {

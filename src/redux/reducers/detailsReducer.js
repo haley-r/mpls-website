@@ -1,6 +1,7 @@
 const detailsReducer = (state = {}, action) => {
   if (action.type==='SET_DETAILS'){
-    return action.payload;
+    if (action.payload){return action.payload;}
+    else {return state}
   }
   return state;
 };//eventReducer holds an array of all published events

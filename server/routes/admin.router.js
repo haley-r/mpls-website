@@ -24,6 +24,18 @@ router.get('/users', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });//gets users with access levels below current user
 
+//select details for the specific event chosen by id
+router.get('/details/:id', (req, res) => {
+  console.log('in admin details get');
+  
+  //change this to not include host contact if not public
+  let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic", "published" FROM "events" WHERE "id"=$1;';
+  let values = [req.params.id];
+  pool.query(queryText, values)
+    .then((response) => res.send(response.rows))
+    .catch(() => res.sendStatus(500));
+});
+
 router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
   let queryText = 'UPDATE "events" SET "published"=true WHERE "events"."id"=$1;';
   let values = [req.params.eventId]
