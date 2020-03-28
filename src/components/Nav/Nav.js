@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import LogOutButton from '../LogOutButton/LogOutButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => (
@@ -9,6 +9,9 @@ const Nav = (props) => (
       <Link className="nav-link" to="/admin">Admin</Link>
       {/* <Link className="nav-link" to="/contact">Contact</Link> */}
       <Link className="nav-link" to="/post-event-1">Make Event Post</Link>
+      {props.user.id &&
+        <LogOutButton className="nav-link" />
+      }
   </div>
 );
 

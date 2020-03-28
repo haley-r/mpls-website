@@ -28,6 +28,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 
 import './App.css';
+import AdminEdit from '../AdminEdit/AdminEdit';
 
 class App extends Component {
   componentDidMount () {
@@ -55,6 +56,7 @@ class App extends Component {
             {/* protected routes */}
             <ProtectedRoute exact path="/admin" component={AdminDashboard} />
             <ProtectedRoute exact path="/admin/details/:eventId" component={AdminDetails} />
+            <ProtectedRoute exact path="/admin/edit/:eventId" component={AdminEdit} />
 
 
             {/* If none of the other routes matched, we will show a 404. */}

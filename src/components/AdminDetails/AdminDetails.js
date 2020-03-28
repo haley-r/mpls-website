@@ -15,6 +15,10 @@ class EventDetails extends Component {
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
     }
+    editMode = () => {
+        this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
+    }
+
 
     //display the events that are stored in redux state and on props:
     render() {
@@ -55,8 +59,8 @@ class EventDetails extends Component {
                 <div className="actionButtons">
                     {/* have a conditional based on whether event is published or not */}
                     <button onClick={()=>this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
-                    {/* eventually make this a link to an edit page - this is for mvp */}
-                        <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
+                    <button onClick={this.editMode}>edit</button>
+                    <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>
                 }
             </section>

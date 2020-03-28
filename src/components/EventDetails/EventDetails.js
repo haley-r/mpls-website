@@ -29,6 +29,10 @@ class EventDetails extends Component {
         }
     }
 
+    editMode=()=>{
+        this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
+    }
+
     laterEvent=()=>{
         if (this.props.ids.currentIndex+1 === this.props.ids.idArray.length) {
             alert('no later events');
@@ -74,7 +78,7 @@ class EventDetails extends Component {
                     </article>
                 }
                 {this.props.user.id &&
-                    <button>edit/delete event</button>
+                    <button onClick={this.editMode}>edit/delete event</button>
                 }
             </section>
         )
