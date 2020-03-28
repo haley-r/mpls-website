@@ -5,8 +5,7 @@ import moment from 'moment';
 class EventDetails extends Component {
     // upon mounting it will GET details for the single event at the id in the route
     componentDidMount = () => {
-        this.props.dispatch({ type: 'FETCH_DETAILS', payload: { eventId: this.props.match.params.eventId, user: false } }) 
-    }
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: {eventId: this.props.match.params.eventId, user: true}})    }
     backToMain =()=> {
         this.props.history.push('/');
     }
@@ -48,6 +47,17 @@ class EventDetails extends Component {
                         <h2>There doesn't seem to be anything here.</h2>
                         <p>Log in and go to the admin dashboard if you are trying to see an unpublished or archived event.</p>
                     </article>
+                }
+                
+
+                {this.props.user.id 
+                &&
+                <div className="actionButtons">
+                    {/* have a conditional based on whether event is published or not */}
+                    <button onClick={()=>this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    {/* eventually make this a link to an edit page - this is for mvp */}
+                        <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
+                </div>
                 }
             </section>
         )

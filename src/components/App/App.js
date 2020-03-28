@@ -21,6 +21,7 @@ import EventConfirmation from '../EventConfirmation/EventConfirmation';
 
 //these components are only shown to logged in users
 import AdminDashboard from '../AdminDashboard/AdminDashboard';
+import AdminDetails from '../AdminDetails/AdminDetails';
 
 //this decides which of the above components are shown at certain routes
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -53,6 +54,8 @@ class App extends Component {
             <Route exact path="/post-event-4" component={EventConfirmation} />
             {/* protected routes */}
             <ProtectedRoute exact path="/admin" component={AdminDashboard} />
+            <ProtectedRoute exact path="/admin/details/:eventId" component={AdminDetails} />
+
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
