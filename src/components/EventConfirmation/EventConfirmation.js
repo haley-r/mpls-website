@@ -5,28 +5,20 @@ class EventConfirmation extends Component {
     // upon mounting it will GET details for the single event at the id in the route
     backToMain = () => {
         this.props.history.push('/');
-    }
-
-
-    // UNSTAGE_EVENT
-    backToForm = () => {
-        this.props.history.push('/post-event-2');
-    }
-    editEvent = () => {
-        this.props.history.push('/post-event-edit');
-    }
-    postEvent = () => {
-        //post the event to the database
-        this.props.dispatch({ type: 'POST_EVENT', payload: this.props.tempEvent })
-        //go to the confirmation page
-        this.props.history.push('/post-event-4');
+        this.props.dispatch({ type: 'UNSTAGE_EVENT'});
     }
 
     //display the events that are stored in redux state and on props:
     render() {
         return (
             <section className="confirmation">
-               <p>{this.props.confirmationMessage}</p>
+                {this.props.confirmationMessage===''
+                ?
+                <p>There's nothing here. To create an event post, choose 'Create Event Post'</p>
+                :
+                <p>{this.props.confirmationMessage}</p>
+                }
+                <button onClick={this.backToMain}>Back to Main Page</button>
             </section>
         )
     }

@@ -87,7 +87,7 @@ class EventBoard extends Component {
                         }
                     </article>
                 }
-                {this.props.admin.users &&
+                {/* {this.props.admin.users &&
                     <article className="users">
                         <h2>Users</h2>
                         <p>select 'update' to manage access</p>
@@ -117,7 +117,7 @@ class EventBoard extends Component {
                             <p>no users retrieved</p>
                         }
                     </article>
-                }
+                } */}
             </section>
         )
     }
