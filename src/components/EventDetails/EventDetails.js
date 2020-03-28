@@ -19,6 +19,26 @@ class EventDetails extends Component {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
     }
 
+    earlierEvent=()=>{
+        if (this.props.ids.currentIndex===0){
+            alert('no earlier events');
+        }
+        else{
+        this.props.history.push(`/details/${this.props.ids.idArray[this.props.ids.currentIndex-1]}`);
+        window.location.reload(false);
+        }
+    }
+
+    laterEvent=()=>{
+        if (this.props.ids.currentIndex+1 === this.props.ids.idArray.length) {
+            alert('no later events');
+        }
+        else {
+            this.props.history.push(`/details/${this.props.ids.idArray[this.props.ids.currentIndex + 1]}`);
+            window.location.reload(false);
+        }
+    }
+
     //display the events that are stored in redux state and on props:
     render() {
         return (
@@ -44,6 +64,8 @@ class EventDetails extends Component {
                         {this.props.details.hostContactPublic &&
                             <p>host contact: {this.props.details.hostContact}</p>
                         }
+                        <button onClick={this.earlierEvent}> earlier events </button>
+                        <button onClick={this.laterEvent}> later events </button>
                     </article>
                     :
                     <article className="no-details">
@@ -56,5 +78,5 @@ class EventDetails extends Component {
     }
 }
 
-const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, user: reduxState.user })
+const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, user: reduxState.user, ids: reduxState.ids })
 export default connect(putReduxStateOnProps)(EventDetails);
