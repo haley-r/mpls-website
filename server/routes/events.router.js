@@ -28,7 +28,7 @@ router.get('/ids', (req, res) => {
 //select details for the specific event chosen by id
 router.get('/:id', (req, res) => {
     //change this to not include host contact if not public
-    let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic" FROM "events" WHERE "id"=$1 AND "published";';
+    let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "startDateString", "startTimeString", "endDateString", "endTimeString", "location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic" FROM "events" WHERE "id"=$1 AND "published";';
     let values = [req.params.id];
     pool.query(queryText, values)
         .then((response) => res.send(response.rows))
@@ -40,14 +40,19 @@ router.post('/', (req, res) => {
     let event=req.body;
     const queryText = 
         `INSERT INTO "events" 
-        ("name", "shortDescription", "startTime", "endTime", "location",
+        ("name", "shortDescription", "startTime", "endTime",
+        "startDateString", "startTimeString", "endDateString", "endTimeString", "location",
         "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);`;
     const values = [
         event.name,
         event.shortDescription,
         `${event.startDate} ${event.startTime}:00`,
         `${event.endDate} ${event.endTime}:00`,
+        event.startDate,
+        event.startTime,
+        event.endDate,
+        event.endTime,
         event.location,
         event.fullDescription,
         event.posterLink,

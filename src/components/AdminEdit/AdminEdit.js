@@ -6,10 +6,10 @@ class AdminEdit extends Component {
     state = {
         name: this.props.details.name,
         shortDescription: this.props.details.shortDescription,
-        startDate: this.props.details.startDate,
-        startTime: this.props.details.startTime,
-        endDate: this.props.details.endDate,
-        endTime: this.props.details.endTime,
+        startDate: this.props.details.startDateString,
+        startTime: this.props.details.startTimeString,
+        endDate: this.props.details.endDateString,
+        endTime: this.props.details.endTimeString,
         location: this.props.details.location,
         fullDescription: this.props.details.fullDescription,
         posterLink: this.props.details.posterLink,
@@ -48,9 +48,6 @@ class AdminEdit extends Component {
             <section className="enterEvent">
                 <h2>change any field:</h2>
                 <form onSubmit={this.createEvent}>
-                    {this.state.name && 
-                        <p>this.state.name exists</p>
-                    }
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
                         value={this.state.name} onChange={(event) => this.handleInput(event, 'name')} />
