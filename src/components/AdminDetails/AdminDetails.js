@@ -26,6 +26,10 @@ class EventDetails extends Component {
         this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
     }
 
+    leaveComment=(eventId)=> {
+        this.props.dispatch({ type: 'ADD_NOTE', payload: { id: this.props.match.params.eventId, text: 'this is a comment', userId: this.props.user.id }})
+    }
+
 
     //display the events that are stored in redux state and on props:
     render() {
@@ -78,6 +82,7 @@ class EventDetails extends Component {
                     }
                     <button onClick={this.editMode}>edit</button>
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
+                    <button onClick={this.leaveComment}>leave comment</button>
                 </div>
                 }
             </section>

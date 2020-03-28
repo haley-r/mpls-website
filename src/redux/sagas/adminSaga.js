@@ -46,6 +46,12 @@ function* deleteEvent(action) {
   catch (error) { console.log('Error with posting event:', error); }
 }
 
+function * addNote(action) {
+  console.log('action.payload in addNote adminSaga is:', action.payload )
+  try { yield axios.post(`/api/admin/notes/${action.payload.id}`, action.payload); }
+  catch (error) { console.log('Error with posting event:', error); }
+}
+
 //FETCH_DASHBOARD is dispatched from AdminDashboard upon mounting
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
@@ -53,6 +59,8 @@ function* adminSaga() {
   yield takeLatest('SET_FLAGGED', flagEvent);
   yield takeLatest('UPDATE_EVENT', updateEvent);
   yield takeLatest('DELETE_SELECTED', deleteEvent);
+  yield takeLatest('ADD_NOTE', addNote);
+
 }
 
 export default adminSaga;

@@ -101,5 +101,14 @@ router.delete('/delete/:eventId', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });//deletes selected event
 
+router.post('/notes/:eventId', rejectUnauthenticated, (req, res) => {
+  console.log('req.body:', req.body);
+  let queryText = `INSERT INTO "notes" ("text","event_id", "user_id", "time") VALUES ($1, $2, $3, NOW());`;
+  let values = [req.body.text, req.params.eventId, req.body.userId]
+  pool.query(queryText, values)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});//sets to published or unpublished
+
 
 module.exports = router;
