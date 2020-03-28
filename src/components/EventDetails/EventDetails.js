@@ -73,6 +73,9 @@ class EventDetails extends Component {
                         <p>Log in and go to the admin dashboard if you are trying to see an unpublished or archived event.</p>
                     </article>
                 }
+                {this.props.user.id &&
+                    <button>edit/delete event</button>
+                }
             </section>
         )
     }
