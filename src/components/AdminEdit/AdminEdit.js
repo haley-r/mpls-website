@@ -18,6 +18,12 @@ class AdminEdit extends Component {
         hostContactPublic: this.props.details.hostContactPublic
     }
 
+    componentDidMount=()=>{
+        if (! this.state.name){
+            this.props.history.push(`/admin/details/${this.props.match.params.eventId}`);
+        }
+    }
+
 
     //dispatch with bundled input values object (this.state) as payload
     createEvent = (event) => {
