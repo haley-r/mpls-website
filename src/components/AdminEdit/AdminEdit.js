@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 class AdminEdit extends Component {
     //local state will hold input values for all fields
     state = {
-        name: this.props.tempEvent.name,
-        shortDescription: this.props.tempEvent.shortDescription,
-        startDate: this.props.tempEvent.startDate,
-        startTime: this.props.tempEvent.startTime,
-        endDate: this.props.tempEvent.endDate,
-        endTime: this.props.tempEvent.endTime,
-        location: this.props.tempEvent.location,
-        fullDescription: this.props.tempEvent.fullDescription,
-        posterLink: this.props.tempEvent.posterLink,
-        updates: this.props.tempEvent.updates,
-        hostContact: this.props.tempEvent.hostContact,
-        hostContactPublic: this.props.tempEvent.hostContactPublic
+        name: this.props.details.name,
+        shortDescription: this.props.details.shortDescription,
+        startDate: this.props.details.startDate,
+        startTime: this.props.details.startTime,
+        endDate: this.props.details.endDate,
+        endTime: this.props.details.endTime,
+        location: this.props.details.location,
+        fullDescription: this.props.details.fullDescription,
+        posterLink: this.props.details.posterLink,
+        updates: this.props.details.updates,
+        hostContact: this.props.details.hostContact,
+        hostContactPublic: this.props.details.hostContactPublic
     }
+
 
     //dispatch with bundled input values object (this.state) as payload
     createEvent = (event) => {
@@ -41,6 +42,9 @@ class AdminEdit extends Component {
             <section className="enterEvent">
                 <h2>change any field:</h2>
                 <form onSubmit={this.createEvent}>
+                    {this.state.name && 
+                        <p>this.state.name exists</p>
+                    }
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
                         value={this.state.name} onChange={(event) => this.handleInput(event, 'name')} />
@@ -81,8 +85,12 @@ class AdminEdit extends Component {
                     <input className="input-button" type="submit" name="submit" value="confirm changes" />
                 </form>
                 <div className="actionButtons">
-                    {/* have a conditional based on whether event is published or not */}
-                    <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    {this.props.details.published
+                        ?
+                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>uppublish</button>
+                        :
+                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    }
                     <button onClick={this.editMode}>edit</button>
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>
@@ -90,5 +98,5 @@ class AdminEdit extends Component {
         )
     }
 }
-const putReduxStateOnProps = (reduxState) => ({ tempEvent: reduxState.tempEvent })
+const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details })
 export default connect(putReduxStateOnProps)(AdminEdit);

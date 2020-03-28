@@ -31,6 +31,7 @@ class EventDetails extends Component {
 
     editMode=()=>{
         this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: { eventId: this.props.match.params.eventId, user: true } })
     }
 
     laterEvent=()=>{
