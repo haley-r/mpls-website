@@ -80,6 +80,12 @@ class AdminEdit extends Component {
                     <p className="sidenote">*required field</p>
                     <input className="input-button" type="submit" name="submit" value="confirm changes" />
                 </form>
+                <div className="actionButtons">
+                    {/* have a conditional based on whether event is published or not */}
+                    <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    <button onClick={this.editMode}>edit</button>
+                    <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
+                </div>
             </section>          
         )
     }

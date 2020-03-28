@@ -10,7 +10,9 @@ class EventDetails extends Component {
         this.props.history.push('/');
     }
     dispatchPublish=(eventId)=> {
-        this.props.dispatch({type: 'SET_PUBLISHED', payload: {id: eventId}});
+        if (this.props.details.published) {this.props.dispatch({ type: 'SET_PUBLISHED', payload: { id: eventId, setTo: false } });}
+        else {this.props.dispatch({type: 'SET_PUBLISHED', payload: {id: eventId, setTo: true}});}
+        window.location.reload(false);
     }
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
@@ -57,8 +59,12 @@ class EventDetails extends Component {
                 {this.props.user.id 
                 &&
                 <div className="actionButtons">
-                    {/* have a conditional based on whether event is published or not */}
-                    <button onClick={()=>this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    {this.props.details.published
+                    ?
+                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>uppublish</button>
+                    :
+                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
+                    }
                     <button onClick={this.editMode}>edit</button>
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>

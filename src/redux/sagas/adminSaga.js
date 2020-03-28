@@ -28,12 +28,11 @@ function* fetchDashboard(action) {
 
 function* publishEvent(action){
   console.log('action.payload in published is', action.payload)
-  try { yield axios.put(`/api/admin/publish/${action.payload.id}`); }
-  catch (error) { console.log('Error with posting event:', error); }
+  try { yield axios.put(`/api/admin/publish/${action.payload.id}`, action.payload); }
+  catch (error) { console.log('Error with updating event:', error); }
 }
 
 function* deleteEvent(action) {
-  console.log('action.payload in delete event is', action.payload)
   try { yield axios.delete(`/api/admin/delete/${action.payload.id}`); }
   catch (error) { console.log('Error with posting event:', error); }
 }

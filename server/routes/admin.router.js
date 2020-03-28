@@ -37,8 +37,9 @@ router.get('/details/:id', (req, res) => {
 });
 
 router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
-  let queryText = 'UPDATE "events" SET "published"=true WHERE "events"."id"=$1;';
-  let values = [req.params.eventId]
+  console.log('req.body:', req.body);
+  let queryText = 'UPDATE "events" SET "published"=$1 WHERE "events"."id"=$2;';
+  let values = [req.body.setTo, req.params.eventId]
   pool.query(queryText, values)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(500));
