@@ -5,7 +5,9 @@ import moment from 'moment';
 class EventDetails extends Component {
     // upon mounting it will GET details for the single event at the id in the route
     componentDidMount = () => {
-        this.props.dispatch({ type: 'FETCH_DETAILS', payload: { eventId: this.props.match.params.eventId, user: false } }) 
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: { eventId: this.props.match.params.eventId, user: false } });
+        this.props.dispatch({ type: 'FETCH_IDS', payload: { eventId: this.props.match.params.eventId, user: false } }) 
+
     }
     backToMain =()=> {
         this.props.history.push('/');

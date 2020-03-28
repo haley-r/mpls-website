@@ -4,11 +4,26 @@ const router = express.Router();
 
 //select all events that are marked as published
 router.get('/', (req, res) => {
-    let queryText = 'SELECT "id","name","shortDescription", "startTime","endTime","location" FROM "events" WHERE "published" ORDER BY "startTime";';
+    let queryText = 'SELECT "id","name","shortDescription", "startTime", "endTime","location" FROM "events" WHERE "published" ORDER BY "startTime";';
     pool.query(queryText)
         .then((response) => res.send(response.rows))
         .catch(() => res.sendStatus(500));
 });
+
+//select all ids from events that are marked as published
+router.get('/ids', (req, res) => {
+    let queryText = 'SELECT "id" FROM "events" WHERE "published" ORDER BY "startTime";';
+    pool.query(queryText)
+        .then((response) => {
+            let idArray=[];
+            for (idObject of response.rows){
+                idArray.push(idObject.id);
+            }
+            res.send(idArray);
+        })
+        .catch(() => res.sendStatus(500));
+});
+
 
 //select details for the specific event chosen by id
 router.get('/:id', (req, res) => {

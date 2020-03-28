@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchEvents() {
@@ -23,14 +23,12 @@ function* fetchDetails(action) {
    }
 }
 
-// function* postEvent(action) {
-//   //attempt post from server, if it doesn't work console log the error
-//   try {yield axios.post('/api/events', action.payload);}
-//   catch (error) {console.log('Error with posting event:', error);}
-//   //yield put({response.data.json})
-//   //console log the response
-//   //your event has been added reducer
-// }//^david call
+function* fetchIds(action){
+  let thisId = Number(action.payload.eventId);
+  const allPublishedIds = yield axios.get(`/api/events/ids`);
+  let indexOfThisId = allPublishedIds.data.indexOf(thisId)
+  yield put({type: 'SET_IDS', payload:{idArray: allPublishedIds.data, currentIndex: indexOfThisId}})
+}
 
 
 function* postEvent(action) {
@@ -49,6 +47,7 @@ function* postEvent(action) {
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS', fetchEvents);
   yield takeLatest('FETCH_DETAILS', fetchDetails);
+  yield takeLatest('FETCH_IDS' , fetchIds);
   yield takeLatest('POST_EVENT', postEvent);
 }
 
