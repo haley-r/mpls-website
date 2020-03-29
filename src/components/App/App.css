@@ -304,6 +304,7 @@ ul {
     padding: 0 4vw;
 }
 .logoutButton {
+    text-transform: none;
     font-weight: normal;
     background-color:var(--blue-0);
     color: var(--ivory-0);
