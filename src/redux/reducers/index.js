@@ -6,6 +6,7 @@ import tempEvent from './tempEventReducer';
 import confirmation from './confirmationReducer';
 import event from './eventReducer';
 import details from './detailsReducer';
+import notes from './notesReducer';
 import ids from './idsReducer';
 import admin from './adminReducer';
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   confirmation,
   event,
   details,
+  notes,
   ids,
   admin,
 });

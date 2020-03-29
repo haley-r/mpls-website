@@ -52,6 +52,19 @@ function * addNote(action) {
   catch (error) { console.log('Error with posting event:', error); }
 }
 
+function* fetchNotes(action) {
+  const config = {
+    headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,
+  };
+  try {
+    const response = yield axios.get(`/api/admin/notes/${action.payload.eventId}`, config);
+    yield put({ type: 'SET_NOTES', payload: response.data });
+  }
+  catch (error) {console.log('notes get request failed', error);}
+}//combines 3 get requests to send bundled in an object to eventReducer
+
+
 //FETCH_DASHBOARD is dispatched from AdminDashboard upon mounting
 function* adminSaga() {
   yield takeLatest('FETCH_DASHBOARD', fetchDashboard);
@@ -60,7 +73,7 @@ function* adminSaga() {
   yield takeLatest('UPDATE_EVENT', updateEvent);
   yield takeLatest('DELETE_SELECTED', deleteEvent);
   yield takeLatest('ADD_NOTE', addNote);
-
+  yield takeLatest('FETCH_NOTES', fetchNotes);
 }
 
 export default adminSaga;

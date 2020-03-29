@@ -34,6 +34,20 @@ router.get('/details/:id', (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
+router.get('/notes/:id', (req, res) => {
+  //change this to not include host contact if not public
+  let queryText = `SELECT "notes"."text", 
+                          "notes"."time" as "noteTime", 
+                          "notes"."user_id" AS "userId", 
+                          "user"."username"
+  FROM "events" JOIN "notes" ON "events"."id" = "notes"."event_id" JOIN "user" ON "user"."id" = "notes"."user_id"
+  WHERE "events"."id" = $1;`;
+  let values = [req.params.id];
+  pool.query(queryText, values)
+    .then((response) => res.send(response.rows))
+    .catch(() => res.sendStatus(500));
+});
+
 router.put('/publish/:eventId', rejectUnauthenticated, (req, res) => {
   console.log('req.body:', req.body);
   let queryText = 'UPDATE "events" SET "published"=$1 WHERE "events"."id"=$2;';
