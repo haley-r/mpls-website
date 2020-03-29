@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { array } from 'prop-types';
 
 class EventForm extends Component {
     //local state will hold input values for all fields
@@ -15,7 +16,8 @@ class EventForm extends Component {
         posterLink: '',
         updates: '',
         hostContact: '',
-        hostContactPublic: false
+        hostContactPublic: false,
+        tags: []
     }
 
     //autopopulate with hidden click
@@ -32,7 +34,7 @@ class EventForm extends Component {
             posterLink: 'https://i.insider.com/4fbe4b636bb3f7d307000003?width=600&format=jpeg&auto=webp',
             updates: '@JelloFestOfficial on instagram',
             hostContact: 'DM the instagram account',
-            hostContactPublic: true
+            hostContactPublic: true,
         })
     }
 
@@ -53,6 +55,25 @@ class EventForm extends Component {
             [type]: event.target.value        
         })
     }
+
+    updateTag=(event)=>{
+        let tagArray = this.state.tags;
+        if (tagArray.includes(event.target.value)){
+        //if in tagArray, take it out
+            let indexToSpliceOut=tagArray.indexOf(event.target.value);
+            tagArray.splice(indexToSpliceOut,1);
+            this.setState({
+                tags: tagArray
+            })
+        }
+        else{
+        //if not in tagArray, add it
+        this.setState({
+            tags: [...this.state.tags, event.target.value]
+        })
+    }
+    }
+
     //display the events that are stored in redux state and on props:
     render() {
         return (
@@ -81,6 +102,14 @@ class EventForm extends Component {
                     <label htmlFor="full-description">Description*<span>use the description to describe the event (obviously) as well as how to attend and any other important information such as age appropriateness or capacity</span></label>
                     <textarea required type="text" id="full-description"
                         value={this.state.fullDescription} onChange={(event) => this.handleInput(event, 'fullDescription')} />
+                    <input type="checkbox" id="ArtTag" value="1" onChange={this.updateTag}/>
+                        <label for="ArtTag">Art</label>
+                    <input type="checkbox" id="MusicTag" value="2" onChange={this.updateTag}/>
+                        <label for="MusicTag">Music</label>
+                    <input type="checkbox" id="MutualAidTag" value="3" onChange={this.updateTag}/>
+                        <label for="MutualAidTag">Mutual Aid</label>
+                    <input type="checkbox" id="FoodTag" value="4" onChange={this.updateTag}/>
+                        <label for="FoodTag">Food</label>
                     <label htmlFor="poster-link">Link to Poster<span>upload image on another site, then link to it here.</span></label>
                     <input type="text" id="poster-link"
                         value={this.state.posterLink} onChange={(event) => this.handleInput(event, 'posterLink')} />
