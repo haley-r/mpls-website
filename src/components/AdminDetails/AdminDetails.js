@@ -111,10 +111,26 @@ class EventDetails extends Component {
                         <input className="input-button" type="submit" name="submit" value="leave note" />
                     </form>
                 }
+
+                {this.state.commentInput &&
+                    <form onSubmit={() => this.leaveComment(this.state.inputText)}>
+                        <label htmlFor="note-text">Leave a Note:</label>
+                        <textarea required type="text" id="note-text"
+                            value={this.state.inputText} onChange={this.handleInput} />
+                        <input className="input-button" type="submit" name="submit" value="leave note" />
+                    </form>
+                }
+                {this.props.notes[0] &&
+                    <>
+                        {this.props.notes.map((note)=>
+                            <p>{note.username} at {moment(note.noteTime).format('h:mm a')}: {note.text}</p>
+                        )}
+                    </>
+                }
             </section>
         )
     }
 }
 
-const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, user: reduxState.user })
+const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, notes: reduxState.notes, user: reduxState.user })
 export default connect(putReduxStateOnProps)(EventDetails);
