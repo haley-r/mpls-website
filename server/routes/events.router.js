@@ -35,6 +35,18 @@ router.get('/:id', (req, res) => {
         .catch(() => res.sendStatus(500));
 });
 
+router.get('/tags/:id', (req, res) => {
+    //get tag names that are applicable to event
+    let queryText = `SELECT "tags"."tagName" FROM "tags" 
+                    JOIN "events_tags" ON "tags"."id" = "events_tags"."tag_id" 
+                    JOIN "events" ON "events"."id" = "events_tags"."event_id"
+                    WHERE "events"."id" = $1;`;
+    let values = [req.params.id];
+    pool.query(queryText, values)
+        .then((response) => res.send(response.rows))
+        .catch(() => res.sendStatus(500));
+});
+
 //post info gathered from form into database
 router.post('/', (req, res) => {
     let event=req.body;
@@ -64,6 +76,8 @@ router.post('/', (req, res) => {
         .then(() => res.sendStatus(201))
         .catch(() => res.sendStatus(500));
 });
+
+
 
 module.exports = router;
 

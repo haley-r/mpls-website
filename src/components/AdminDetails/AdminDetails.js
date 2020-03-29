@@ -11,6 +11,8 @@ class EventDetails extends Component {
     componentDidMount = () => {
         this.props.dispatch({ type: 'FETCH_DETAILS', payload: {eventId: this.props.match.params.eventId, user: true}})    
         this.props.dispatch({ type: 'FETCH_NOTES', payload: { eventId: this.props.match.params.eventId} })
+        this.props.dispatch({ type: 'FETCH_TAGS', payload: { eventId: this.props.match.params.eventId, user: false } });
+
     }
     backToMain =()=> {
         this.props.history.push('/');
@@ -81,6 +83,8 @@ class EventDetails extends Component {
                     </article>
                 }
                 
+                <h3>TAGS:</h3>
+                {JSON.stringify(this.props.tags)}
 
                 {this.props.user.id 
                 &&
@@ -132,5 +136,5 @@ class EventDetails extends Component {
     }
 }
 
-const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, notes: reduxState.notes, user: reduxState.user })
+const putReduxStateOnProps = (reduxState) => ({ details: reduxState.details, notes: reduxState.notes, user: reduxState.user, tags: reduxState.tags })
 export default connect(putReduxStateOnProps)(EventDetails);

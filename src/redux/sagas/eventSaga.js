@@ -30,6 +30,12 @@ function* fetchIds(action){
   yield put({type: 'SET_IDS', payload:{idArray: allPublishedIds.data, currentIndex: indexOfThisId}})
 }
 
+function* fetchTags(action) {
+  let thisId = Number(action.payload.eventId);
+  const response = yield axios.get(`/api/events/tags/${thisId}`);
+  console.log('response from doing a get, in eventSaga fetchTags', response.data);
+  yield put({ type: 'SET_TAGS', payload: response.data })
+}
 
 function* postEvent(action) {
   // if there's a post success message, clear it
@@ -48,6 +54,7 @@ function* eventSaga() {
   yield takeLatest('FETCH_EVENTS', fetchEvents);
   yield takeLatest('FETCH_DETAILS', fetchDetails);
   yield takeLatest('FETCH_IDS' , fetchIds);
+  yield takeLatest('FETCH_TAGS', fetchTags);
   yield takeLatest('POST_EVENT', postEvent);
 }
 

@@ -7,6 +7,7 @@ import confirmation from './confirmationReducer';
 import event from './eventReducer';
 import details from './detailsReducer';
 import notes from './notesReducer';
+import tags from './tagsReducer';
 import ids from './idsReducer';
 import admin from './adminReducer';
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   event,
   details,
   notes,
+  tags,
   ids,
   admin,
 });

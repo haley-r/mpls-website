@@ -25,7 +25,7 @@ router.get('/users', rejectUnauthenticated, (req, res) => {
 });//gets users with access levels below current user
 
 //select details for the specific event chosen by id
-router.get('/details/:id', (req, res) => {  
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {  
   //change this to not include host contact if not public
   let queryText = 'SELECT "id","name","shortDescription","startTime","endTime", "startDateString", "startTimeString", "endDateString", "endTimeString","location", "fullDescription", "posterLink", "updates", "hostContact", "hostContactPublic", "published", "flagged" FROM "events" WHERE "id"=$1;';
   let values = [req.params.id];
@@ -34,7 +34,7 @@ router.get('/details/:id', (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
-router.get('/notes/:id', (req, res) => {
+router.get('/notes/:id', rejectUnauthenticated, (req, res) => {
   //change this to not include host contact if not public
   let queryText = `SELECT "notes"."text", 
                           "notes"."time" as "noteTime", 
