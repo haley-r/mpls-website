@@ -6,22 +6,13 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="Nav">
+      {props.user.id && <LogOutButton className="nav-link" />}
       <Link className="nav-link" to="/admin">Admin</Link>
-      {/* <Link className="nav-link" to="/contact">Contact</Link> */}
       <Link className="nav-link" to="/post-event-1">Make Event Post</Link>
-      {props.user.id &&
-        <LogOutButton className="nav-link" />
-      }
   </div>
 );
 
-// Instead of taking everything from state, we just want the user
-// object to determine if they are logged in
-// if they are logged in, we show them a few more links 
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({ user }) => ({ user });
-const mapStateToProps = state => ({
-  user: state.user,
-});
+//redux state holds user- if there's a user, show logout option
+const mapStateToProps = state => ({user: state.user});
 
 export default connect(mapStateToProps)(Nav);

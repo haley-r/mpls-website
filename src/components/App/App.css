@@ -180,14 +180,14 @@ img {
 }
 #about-button {
     position: absolute;
-    top: 3.6em;
+    top: 3.8em;
     left: 50%;
     transform: translate(-50%);
     width: 5em;
     padding: .25em 0;
     margin: 0;
     border-radius: 2em;
-    font-size: 1em;
+    font-size: .8em;
     border: 4px solid var(--blue-0);
     background-color: var(--ivory-0);
     color: var(--blue-2);
@@ -196,7 +196,7 @@ img {
     font-family: 'Shrikhand', cursive;
     font-size: 1.2 em;
     color: var(--blue-3);
-    padding: .25em 0 .75em 0;
+    padding: .25em 0 .3em 0;
     margin: 0;
 }
 .Header .border-div {
@@ -221,26 +221,31 @@ img {
     font-size: 1.1em;
     color: var(--blue-2);
 }
+
 /* ------------NAV-STYLES------------ */
 .Nav {
     background-color: var(--blue-0);
-    color: rgb(240, 238, 230);
+    color: var(--ivory-0);
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 1em 5vw 3em 5vw;
+    padding: 1em 5vw 2em 5vw;
     width: 100vw;
 }
-
-.nav-link {
-    padding: 0 6vw;
+.nav-link, .logoutButton {
+    padding: 0 4vw;
+}
+.logoutButton {
+    background-color:var(--blue-0);
+    color: var(--ivory-0);
+    font-size: 1em;
 }
 
 /* ----------FOOTER-STYLES-----------*/
 footer {
     position: fixed;
-    color: rgb(129, 199, 202);
-    font-size: .75em;
+    color: var(--blue-3);
+    font-size: .6em;
     bottom: 10px;
     left: 50%;
     transform: translatex(-50%);
