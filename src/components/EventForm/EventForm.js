@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { array } from 'prop-types';
 
 class EventForm extends Component {
     //local state will hold input values for all fields
@@ -103,13 +102,13 @@ class EventForm extends Component {
                     <textarea required type="text" id="full-description"
                         value={this.state.fullDescription} onChange={(event) => this.handleInput(event, 'fullDescription')} />
                     <input type="checkbox" id="ArtTag" value="1" onChange={this.updateTag}/>
-                        <label for="ArtTag">Art</label>
+                        <label htmlFor="ArtTag">Art</label>
                     <input type="checkbox" id="MusicTag" value="2" onChange={this.updateTag}/>
-                        <label for="MusicTag">Music</label>
+                        <label htmlFor="MusicTag">Music</label>
                     <input type="checkbox" id="MutualAidTag" value="3" onChange={this.updateTag}/>
-                        <label for="MutualAidTag">Mutual Aid</label>
+                        <label htmlFor="MutualAidTag">Mutual Aid</label>
                     <input type="checkbox" id="FoodTag" value="4" onChange={this.updateTag}/>
-                        <label for="FoodTag">Food</label>
+                        <label htmlFor="FoodTag">Food</label>
                     <label htmlFor="poster-link">Link to Poster<span>upload image on another site, then link to it here.</span></label>
                     <input type="text" id="poster-link"
                         value={this.state.posterLink} onChange={(event) => this.handleInput(event, 'posterLink')} />
