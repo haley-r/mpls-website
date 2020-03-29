@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 class EventDetails extends Component {
+    state = {
+        commentInput: false,
+        inputText: ''
+    }
     // upon mounting it will GET details for the single event at the id in the route
     componentDidMount = () => {
         this.props.dispatch({ type: 'FETCH_DETAILS', payload: {eventId: this.props.match.params.eventId, user: true}})    }
@@ -26,8 +30,19 @@ class EventDetails extends Component {
         this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
     }
 
-    leaveComment=(eventId)=> {
-        this.props.dispatch({ type: 'ADD_NOTE', payload: { id: this.props.match.params.eventId, text: 'this is a comment', userId: this.props.user.id }})
+    handleInput=(event)=> {
+        this.setState({
+            inputText: event.target.value
+        })
+    }
+
+    leaveComment=(inputText)=> {
+        this.props.dispatch({ type: 'ADD_NOTE', payload: { id: this.props.match.params.eventId, text: inputText, userId: this.props.user.id }});
+        this.setState({commentInput: false, inputText: ''})
+    }
+
+    showCommentBox=()=>{
+        this.setState({commentInput: true})
     }
 
 
@@ -82,8 +97,17 @@ class EventDetails extends Component {
                     }
                     <button onClick={this.editMode}>edit</button>
                     <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
-                    <button onClick={this.leaveComment}>leave comment</button>
+                    <button onClick={this.showCommentBox}>leave comment</button>
                 </div>
+                }
+
+                {this.state.commentInput &&
+                    <form onSubmit={()=>this.leaveComment(this.state.inputText)}>
+                        <label htmlFor="note-text">Leave a Note:</label>
+                        <textarea required type="text" id="note-text"
+                            value={this.state.inputText} onChange={this.handleInput} />
+                        <input className="input-button" type="submit" name="submit" value="leave note" />
+                    </form>
                 }
             </section>
         )
