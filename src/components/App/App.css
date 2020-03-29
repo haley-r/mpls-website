@@ -183,6 +183,38 @@ img {
     right: -5px;
     padding-left:25px;
 }
+.disclaimer {
+    padding-top: 25px ;
+}
+.disclaimer h2{
+    padding-top: 1em;
+    color: var(--orangered-1);
+}
+.disclaimer h3{
+    color: var(--blue-1);
+}
+.disclaimer h4{
+    color: var(--orangered-0)
+}
+.disclaimer p{
+    padding: 0 1.5em;
+    color: var(--blue-2);
+}
+.disclaimer .info{
+    color: var(--blue-0);
+    margin-top: .5em;
+}
+.got-it{
+    background-color: var(--blue-2);
+    color: var(--ivory-0);
+    padding: 1.5em;
+    border-radius: 2.5em;
+}
+.sidenote {
+    font-size: .8em;
+}
+
+
 
 /* -----FORM-SPECIFIC-STYLES------------ */
 label span {
@@ -202,9 +234,7 @@ input, textarea {
     width: 50%;
 }
 
-.sidenote {
-    font-size: .8em;
-}
+
 
 #full-description {
     min-height: 150px;
