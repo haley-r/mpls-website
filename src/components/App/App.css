@@ -2,7 +2,7 @@
 
 /* import possible fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Katibeh&family=Oleo+Script:wght@400;700&family=Sen:wght@400;700;800&family=Shrikhand&family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&family=Shrikhand&display=swap');
 
 /* 
     font-family: 'Oleo Script', cursive;
@@ -43,8 +43,6 @@ button:focus {
     outline-offset: -4px;
 }*/
 
-/* my sitewide styles */
-
 /* color variables */
 :root {
     --blue-0: rgb(21, 49, 100);
@@ -52,52 +50,87 @@ button:focus {
     --blue-2: rgb(30, 127, 145);
     --blue-3: rgb(103, 186, 197);
     --ivory-0: rgb(240, 238, 230);
+    --ivory-1: rgb(253, 253, 250);
+    --orangered-0:rgb(148, 32, 3);
+    --orangered-1: rgb(214, 65, 19);
+    --orangered-2: rgb(238, 132, 45);
 
 }
 
-
+/* my sitewide styles */
 html {
     background-color: var(--blue-0);
 }
 body {
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    padding: 100px 8vw 100px 8vw;
+    padding: 65px 5vw 100px 5vw;
     margin: 0;
-    background-color: rgb(240, 238, 230);
+    background-color: var(--ivory-0);
     text-align:center;
     font-family: 'Sen', sans-serif;
 }
-
 .hide {
     display: none;
 }
 
+/*----------TEXT-STYLES------------*/
 section h1 {
     font-family: 'Shrikhand', cursive;
-    font-size: 2.8em;
-    color: rgb(5, 175, 138);
+    font-size: 2.5em;
+    color: var(--blue-0);
     line-height: 1em;
-    padding: .5em 0;
+    padding: .5em 0 .25em 0;
     margin: 0;
 }
-
 h2{
-    color: rgb(214, 65, 19);
+    color: var(--orangered-1);
     font-family: 'Shrikhand', cursive;
     padding: 0;
     margin: 0;
 }
-
+p{
+    color: var(--orangered-0);
+    margin: 0;
+    padding: 0;
+}
 a {
     color: inherit;
     text-decoration: none;
 }
 
-button {
-    background-color: rgb(240, 238, 230);
-    font-family: 'Sen', sans-serif;
+/* ----SEMANTIC-ELEMENT-STYLES---------- */
+form, article {
+    border: 8px solid var(--orangered-2);
+    background-color: var(--ivory-1);
+    color: var(--orangered-0);
+    padding: .25em .5em;
+    border-radius: 1.5em;
+    margin: 8px;
 }
+button {
+    background-color: inherit;
+    font-family: 'Sen', sans-serif;
+    font-weight: 700;
+}
+/* -----------SPECIFIC-STYLES----------- */
+.detailsButton{
+    font-size: 1em;
+    text-transform: lowercase;
+    color: var(--blue-0);
+    margin-top: .25em;
+}
+.shortDescription{
+    font-style: italic;
+}
+.date {
+    margin-top: .25em;
+    color: var(--blue-1);
+}
+.location{
+    color: var(--blue-2)
+;}   
 
+/* -----FORM-SPECIFIC-STYLES------------ */
 label span {
     display: block;
     font-size: .6em;
@@ -135,35 +168,25 @@ ul {
     list-style-type: none;
 }
 
-/* ----------FORM_AND_ARTICLE-STLYES----------- */
-form, article {
-    border: 6px solid rgb(238, 132, 45);
-    background-color: rgb(240, 238, 230);
-    color: rgb(105, 36, 9);
-    padding: 1em;
-    border-radius: 3em;
-    margin-bottom: 1em;
-}
-
-article p {
-    margin: 0;
+/* ----------DIV-STLYES----------- */
+.border-div {
     padding: 0;
+    margin-bottom: .75em;
+    background-color: var(--blue-0);
+    background-color:var(--blue-2);
+    border: 8px solid var(--blue-1);
+    border-radius: 2em;
 }
 
-form button, article button, .input-button {
-    border-radius: .5em;
-    background-color:rgb(240, 238, 230);
-    font-weight: 700;
-    font-size: .8em;
-    color: rgb(5, 175, 138);
-}
+
+
+
+
 
     article button:hover {
         background-color: rgb(215, 236, 234);
     }
-.date {
-    color: rgb(18, 45, 95);
-}    
+ 
 
 img {
     width: 80%;
@@ -180,7 +203,7 @@ img {
 }
 #about-button {
     position: absolute;
-    top: 3.8em;
+    top: 3.5em;
     left: 50%;
     transform: translate(-50%);
     width: 5em;
@@ -188,15 +211,16 @@ img {
     margin: 0;
     border-radius: 2em;
     font-size: .8em;
+    font-weight: bold;
     border: 4px solid var(--blue-0);
     background-color: var(--ivory-0);
-    color: var(--blue-2);
+    color: var(--orangered-1);
 }   
 .Header h1 {
     font-family: 'Shrikhand', cursive;
-    font-size: 1.2 em;
-    color: var(--blue-3);
-    padding: .25em 0 .3em 0;
+    font-size: 1.8rem;
+    color: var(--ivory-0);
+    padding: .25em 0 .4em 0;
     margin: 0;
 }
 .Header .border-div {
