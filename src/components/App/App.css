@@ -79,7 +79,7 @@ section h1 {
     font-size: 2.5em;
     color: var(--blue-0);
     line-height: 1em;
-    padding: .5em 0 .25em 0;
+    padding-top: .5em;
     margin: 0;
 }
 h2{
@@ -87,6 +87,12 @@ h2{
     font-family: 'Shrikhand', cursive;
     padding: 0;
     margin: 0;
+}
+h3{
+    color: var(--blue-2);
+    font-family: 'Shrikhand', cursive;
+    padding: 0;
+    margin:0;
 }
 p{
     color: var(--orangered-0);
@@ -111,13 +117,32 @@ button {
     background-color: inherit;
     font-family: 'Sen', sans-serif;
     font-weight: 700;
+    color: var(--blue-0);
+    text-transform: lowercase;
+}
+section {
+    min-height: 95vh;
+}
+img {
+    width: 80%;
+    margin: 1em auto;
 }
 /* -----------SPECIFIC-STYLES----------- */
 .detailsButton{
     font-size: 1em;
-    text-transform: lowercase;
-    color: var(--blue-0);
     margin-top: .25em;
+}
+.back-button {
+    display: block;
+    margin: .5em auto;
+    font-size: 1em;
+    color: var(--orangered-1)
+}
+.admin-button {
+    display: block;
+    margin: .5em auto;
+    font-size: 1em;
+    color: var(--orangered-0)
 }
 .shortDescription{
     font-style: italic;
@@ -127,8 +152,37 @@ button {
     color: var(--blue-1);
 }
 .location{
-    color: var(--blue-2)
-;}   
+    color: var(--blue-2);
+}   
+.Details h2{
+    font-size: 1.2em;
+    line-height: 1em;
+    margin: .25em 0 .5em 0;
+}
+.Details .fullDescription{
+    padding: 0 1em 1em 1em;
+}
+.Details .location{
+    margin-bottom: .5em;
+}
+.additionalInfo{
+    margin-bottom: .5em;
+}
+.chevron {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    height: 400px;
+}
+.left-button{
+    left: -5px;
+    padding-right: 25px;
+}
+.right-button{
+    right: -5px;
+    padding-left:25px;
+}
 
 /* -----FORM-SPECIFIC-STYLES------------ */
 label span {
@@ -171,26 +225,16 @@ ul {
 /* ----------DIV-STLYES----------- */
 .border-div {
     padding: 0;
-    margin-bottom: .75em;
+    margin-top: .75em;
     background-color: var(--blue-0);
     background-color:var(--blue-2);
     border: 8px solid var(--blue-1);
     border-radius: 2em;
 }
 
-
-
-
-
-
     article button:hover {
         background-color: rgb(215, 236, 234);
     }
- 
-
-img {
-    width: 80%;
-}
 
 /* ----------HEADER-STLYES----------- */
 .Header {
@@ -260,6 +304,7 @@ img {
     padding: 0 4vw;
 }
 .logoutButton {
+    font-weight: normal;
     background-color:var(--blue-0);
     color: var(--ivory-0);
     font-size: 1em;
