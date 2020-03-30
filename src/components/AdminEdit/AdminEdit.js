@@ -44,7 +44,8 @@ class AdminEdit extends Component {
     render() {
         return (
             <section className="enterEvent">
-                <h2>change any field:</h2>
+                <h2 className="top-h2">change any field:</h2>
+                <div className="border-div">
                 <form onSubmit={this.saveEdits}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
@@ -85,15 +86,6 @@ class AdminEdit extends Component {
                     <p className="sidenote">*required field</p>
                     <input className="input-button" type="submit" name="submit" value="confirm edits" />
                 </form>
-                <div className="actionButtons">
-                    {/* {this.props.details.published
-                        ?
-                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>uppublish</button>
-                        :
-                        <button onClick={() => this.dispatchPublish(this.props.match.params.eventId)}>publish</button>
-                    }
-                    <button onClick={this.editMode}>edit</button> */}
-                    <button onClick={() => this.dispatchDelete(this.props.match.params.eventId)}>delete</button>
                 </div>
             </section>          
         )
