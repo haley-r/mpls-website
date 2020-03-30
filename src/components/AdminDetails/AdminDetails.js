@@ -29,6 +29,8 @@ class EventDetails extends Component {
     }
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
+        this.props.history.push('/admin');
+        window.location.reload(false);
     }
     editMode = () => {
         this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
