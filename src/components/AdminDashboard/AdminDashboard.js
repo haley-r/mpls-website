@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import PriorityHighOutlinedIcon from '@material-ui/icons/PriorityHighOutlined';
 
 class EventBoard extends Component {
     //local state will hold search parameters, if search is implemented
@@ -34,6 +35,7 @@ class EventBoard extends Component {
                                         <th>Name</th>
                                         <th>Date</th>
                                         <th>Details</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +44,9 @@ class EventBoard extends Component {
                                             <td>{event.name}</td>
                                             <td>{moment(event.startTime).format('M/D/YY')}</td>
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
+                                            <td className="flagbox">
+                                                {event.flagged && <PriorityHighOutlinedIcon/>}
+                                            </td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -65,6 +70,7 @@ class EventBoard extends Component {
                                         <th>Name</th>
                                         <th>Date</th>
                                         <th>Details</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,6 +79,9 @@ class EventBoard extends Component {
                                             <td>{event.name}</td>
                                             <td>{moment(event.startTime).format('M/D')}</td>
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
+                                            <td className="flagbox">
+                                                {event.flagged && <PriorityHighOutlinedIcon />}
+                                            </td>
                                         </tr>
                                     )}
                                 </tbody>
