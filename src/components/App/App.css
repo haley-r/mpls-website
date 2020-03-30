@@ -280,6 +280,32 @@ img {
     text-transform: lowercase;
     color: var(--ivory-0);
 }
+.noteTime{
+    font-size: .6em;
+    margin: 0;
+    padding: 0;
+}
+.singleNote{
+    margin-bottom: .5em;
+    padding: 0;
+}
+.note-form .input-button{
+    font-size: 1em;
+    background-color: var(--blue-2);
+    color: var(--ivory-1);
+    margin: .25em;
+    border-radius: 1em;
+}
+.note-form textarea{
+    width: 100%;
+    border-radius: 1em;
+    padding: .5em;
+}
+.note-form {
+    margin-top: 2em;
+    border: none;
+    background-color: inherit;
+}
 
 /* -----FORM-SPECIFIC-STYLES------------ */
 label span {

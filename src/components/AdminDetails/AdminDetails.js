@@ -42,7 +42,8 @@ class EventDetails extends Component {
 
     leaveComment=(inputText)=> {
         this.props.dispatch({ type: 'ADD_NOTE', payload: { id: this.props.match.params.eventId, text: inputText, userId: this.props.user.id }});
-        this.setState({commentInput: false, inputText: ''})
+        this.setState({commentInput: false, inputText: ''});
+        window.location.reload(false);
     }
 
     showCommentBox=()=>{
@@ -54,26 +55,30 @@ class EventDetails extends Component {
     render() {
         return (
             <section className="EventDetails">
-                <button onClick={this.backToMain}>back home</button>
+                <div className="border-div">
                 {this.props.details.name 
                     ?
                     <article className="Details">
                         <h1>{this.props.details.name}</h1>
                         <h2>{this.props.details.shortDescription}</h2>
-                        <p>{this.props.details.fullDescription}</p>
-
-                        <p>{this.props.details.location}</p>
-                        <p className="date">{moment(this.props.details.startTime).format('ddd M/D')} at {moment(this.props.details.startTime).format('h:mm a')}</p>
-                        {this.props.details.endTime != null &&
-                            <p className="date">{moment(this.props.details.endTime).format('- ddd M/D')} at {moment(this.props.details.endTime).format('h:mm a')}</p>
-                        }
+                        <p className="fullDescription">{this.props.details.fullDescription}</p>
+                        <p className="location">{this.props.details.location}</p>
+                        <p className="date">Start: {moment(this.props.details.startTime).format('ddd M/D')} at {moment(this.props.details.startTime).format('h:mm a')}</p>
+                        <p className="date">End: {moment(this.props.details.endTime).format('ddd M/D')} at {moment(this.props.details.endTime).format('h:mm a')}</p>
                         {this.props.details.posterLink !== '' &&
                             <img src={this.props.details.posterLink} alt="poster would be linked in here with valid url" />
                         }
-                        <p>for updates: {this.props.details.updates}</p>
-
-                        {this.props.details.hostContactPublic &&
-                            <p>host contact: {this.props.details.hostContact}</p>
+                        {this.props.details.updates &&
+                            <>
+                                <h3>Updates</h3>
+                                <p className="additionalInfo">{this.props.details.updates}</p>
+                            </>
+                        }
+                        {this.props.details.hostContact &&
+                            <>
+                                <h3>Host Contact</h3>
+                                <p className="additionalInfo">host contact: {this.props.details.hostContact}</p>
+                            </>
                         }
                     </article>
                     :
@@ -82,6 +87,7 @@ class EventDetails extends Component {
                         <p>Log in and go to the admin dashboard if you are trying to see an unpublished or archived event.</p>
                     </article>
                 }
+                </div>
                 {this.props.user.id 
                 &&
                 <div className="actionButtons">
@@ -104,17 +110,8 @@ class EventDetails extends Component {
                 }
 
                 {this.state.commentInput &&
-                    <form onSubmit={()=>this.leaveComment(this.state.inputText)}>
-                        <label htmlFor="note-text">Leave a Note:</label>
-                        <textarea required type="text" id="note-text"
-                            value={this.state.inputText} onChange={this.handleInput} />
-                        <input className="input-button" type="submit" name="submit" value="leave note" />
-                    </form>
-                }
-
-                {this.state.commentInput &&
-                    <form onSubmit={() => this.leaveComment(this.state.inputText)}>
-                        <label htmlFor="note-text">Leave a Note:</label>
+                    <form onSubmit={()=>this.leaveComment(this.state.inputText)} className="note-form">
+                        <label htmlFor="note-text" className="hide">Leave a Note:</label>
                         <textarea required type="text" id="note-text"
                             value={this.state.inputText} onChange={this.handleInput} />
                         <input className="input-button" type="submit" name="submit" value="leave note" />
@@ -122,11 +119,16 @@ class EventDetails extends Component {
                 }
                 {this.props.notes[0] &&
                     <>
+                    <h2 className="top-h2">Notes:</h2>
                         {this.props.notes.map((note)=>
-                            <p>{note.username} at {moment(note.noteTime).format('h:mm a')}: {note.text}</p>
+                            <div className="singleNote">
+                                <p><strong>{note.username}:</strong> {note.text}</p>
+                                <span className="noteTime">{moment(note.noteTime).calendar()}</span>
+                            </div>
                         )}
                     </>
                 }
+                
             </section>
         )
     }
