@@ -232,7 +232,54 @@ img {
     font-weight: normal;
     width: 120px;
 }
-
+.admin{
+    background-color: var(--blue-0);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left:0;
+    top:0;
+}
+.login-border-div{
+    position: absolute;
+    width: 80vw;
+    top: 45%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border-color: var(--blue-3);
+    padding: 0;
+    margin: 0;
+    background-color: var(--blue-0);
+    background-color:var(--blue-2);
+    border: 8px solid var(--blue-1);
+    border-radius: 2em;
+}
+.login-form{
+    border-color: var(--blue-3);
+}
+.admin h1{
+    font-family: 'Shrikhand', cursive;
+    font-size: 2.5em;
+    color: var(--orangered-1);
+    line-height: 1em;
+    padding-top: .5em;
+    margin: 0;
+}
+.login-form input {
+    width: 80%;
+    margin: auto;
+}
+.login-form .log-in {
+    margin: 1em auto;
+    padding: .5em;
+    border: none;
+    background-color: var(--orangered-2);
+    border-radius: 2em;
+    width: 150px;
+    font-size: 1.2em;
+    text-transform: lowercase;
+    color: var(--ivory-0);
+}
 
 /* -----FORM-SPECIFIC-STYLES------------ */
 label span {
@@ -299,6 +346,7 @@ ul {
 .Header {
     background-color: var(--blue-0);
     position: fixed;
+    z-index: 2;
     top: 0;
     left: 0;
     padding: 0 5vw;
@@ -354,6 +402,7 @@ ul {
     background-color: var(--blue-0);
     color: var(--ivory-0);
     position: fixed;
+    z-index: 3;
     bottom: 0;
     left: 0;
     padding: 1em 5vw 2em 5vw;

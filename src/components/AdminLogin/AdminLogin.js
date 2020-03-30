@@ -40,7 +40,9 @@ class AdminLogin extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
+        <div className="admin">
+        <div className="login-border-div">
+        <form onSubmit={this.login} className="login-form">
           <h1>Login</h1>
           <div>
             <label htmlFor="username">
@@ -73,6 +75,8 @@ class AdminLogin extends Component {
             />
           </div>
         </form>
+          </div>
+        </div>
         <center>
           <button
             type="button"

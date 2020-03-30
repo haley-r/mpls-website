@@ -82,10 +82,6 @@ class EventDetails extends Component {
                         <p>Log in and go to the admin dashboard if you are trying to see an unpublished or archived event.</p>
                     </article>
                 }
-                
-                <h3>TAGS:</h3>
-                {JSON.stringify(this.props.tags)}
-
                 {this.props.user.id 
                 &&
                 <div className="actionButtons">
