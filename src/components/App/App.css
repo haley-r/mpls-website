@@ -213,6 +213,9 @@ img {
 .sidenote {
     font-size: .8em;
 }
+.enterEvent h2{
+    margin-top: 1em;
+}
 
 
 
@@ -222,16 +225,27 @@ label span {
     font-size: .6em;
     color: rgb(238, 132, 45);
 }
-
 input, textarea {
+    border: .2px solid var(--ivory-0);
+    background-color: white;
+    color: var(--blue-0);
     font-family: 'Sen', sans-serif;
     font-size: .8em;
     text-align: center;
 }
-
+.input-button {
+    font-size: 1.2em;
+    margin: 1.5em 0 .5em 0;
+    width: 80%;
+    color: var(--blue-2);
+}
 .datetime-input {
     display: inline-block;
     width: 50%;
+}
+label {
+    display: block;
+    margin-top: .5em;
 }
 
 
@@ -352,9 +366,7 @@ footer {
 }
 
 /* ----------EVENT-FORM-STYLES-----------*/
-label {
-    display: block;
-}
+
 input, textarea {
     display: block;
     width: 100%;

@@ -78,6 +78,7 @@ class EventForm extends Component {
         return (
             <section className="enterEvent">
                 <h2 onClick={this.autoPopulate}>fill in these details!</h2>
+                <div className="border-div">
                 <form onSubmit={this.createEvent}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
@@ -101,14 +102,14 @@ class EventForm extends Component {
                     <label htmlFor="full-description">Description*<span>use the description to describe the event (obviously) as well as how to attend and any other important information such as age appropriateness or capacity</span></label>
                     <textarea required type="text" id="full-description"
                         value={this.state.fullDescription} onChange={(event) => this.handleInput(event, 'fullDescription')} />
-                    <input type="checkbox" id="ArtTag" value="1" onChange={this.updateTag}/>
+                    {/* <input type="checkbox" id="ArtTag" value="1" onChange={this.updateTag}/>
                         <label htmlFor="ArtTag">Art</label>
                     <input type="checkbox" id="MusicTag" value="2" onChange={this.updateTag}/>
                         <label htmlFor="MusicTag">Music</label>
                     <input type="checkbox" id="MutualAidTag" value="3" onChange={this.updateTag}/>
                         <label htmlFor="MutualAidTag">Mutual Aid</label>
                     <input type="checkbox" id="FoodTag" value="4" onChange={this.updateTag}/>
-                        <label htmlFor="FoodTag">Food</label>
+                        <label htmlFor="FoodTag">Food</label> */}
                     <label htmlFor="poster-link">Link to Poster<span>upload image on another site, then link to it here.</span></label>
                     <input type="text" id="poster-link"
                         value={this.state.posterLink} onChange={(event) => this.handleInput(event, 'posterLink')} />
@@ -126,6 +127,7 @@ class EventForm extends Component {
                     <p className="sidenote">*required field</p>
                     <input className="input-button" type="submit" name="submit" value="submit event" />
                 </form>
+                </div>
             </section>          
         )
     }
