@@ -306,6 +306,12 @@ img {
     border: none;
     background-color: inherit;
 }
+th {
+    color: var(--blue-0);
+}
+td button {
+    color: var(--blue-1);
+}
 
 /* -----FORM-SPECIFIC-STYLES------------ */
 label span {

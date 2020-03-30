@@ -21,6 +21,7 @@ class EventBoard extends Component {
         return (
             <section className="AdminDashboard">
                 {this.props.admin.unpublished &&
+                <div className="border-div">
                     <article className="unpublished-events">
                         <h2>Unpublished Events</h2>
                         <p>select 'details' to approve or delete</p>
@@ -32,8 +33,6 @@ class EventBoard extends Component {
                                     <tr>
                                         <th>Name</th>
                                         <th>Date</th>
-                                        {/* <th>Time</th> */}
-                                        {/* <th>Location</th> */}
                                         <th>Details</th>
                                     </tr>
                                 </thead>
@@ -41,9 +40,7 @@ class EventBoard extends Component {
                                     {this.props.admin.unpublished.map((event)=>
                                         <tr key={event.id}>
                                             <td>{event.name}</td>
-                                            <td>{moment(event.startTime).format('M/D')}</td>
-                                            {/* <td>time</td> */}
-                                            {/* <td>{event.location}</td> */}
+                                            <td>{moment(event.startTime).format('M/D/YY')}</td>
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
@@ -53,8 +50,10 @@ class EventBoard extends Component {
                             <p>no unpublished events retrieved from database</p>
                         }
                     </article>
+                </div>
                 }
                 {this.props.admin.published &&
+                    <div className="border-div">
                     <article className="published-events">
                         <h2>Published Events</h2>
                         <p>select 'details' to update or delete</p>
@@ -65,8 +64,6 @@ class EventBoard extends Component {
                                     <tr>
                                         <th>Name</th>
                                         <th>Date</th>
-                                        {/* <th>Time</th> */}
-                                        {/* <th>Location</th> */}
                                         <th>Details</th>
                                     </tr>
                                 </thead>
@@ -75,8 +72,6 @@ class EventBoard extends Component {
                                         <tr key={event.id}>
                                             <td>{event.name}</td>
                                             <td>{moment(event.startTime).format('M/D')}</td>
-                                            {/* <td>time</td> */}
-                                            {/* <td>{event.location}</td> */}
                                             <td><button onClick={() => this.goToDetails(event.id)}>details...</button></td>
                                         </tr>
                                     )}
@@ -85,7 +80,9 @@ class EventBoard extends Component {
                             :
                             <p>no published events retrieved from database</p>
                         }
+                    
                     </article>
+                </div>
                 }
                 {/* {this.props.admin.users &&
                     <article className="users">
