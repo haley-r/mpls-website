@@ -39,7 +39,7 @@ class EventEdit extends Component {
     render() {
         return (
             <section className="enterEvent">
-                <h2>change any field:</h2>
+                <h2 className="top-h2">change any field:</h2>
                 <form onSubmit={this.createEvent}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>
                     <input required type="text" id="name-input"
