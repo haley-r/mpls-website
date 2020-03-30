@@ -26,25 +26,27 @@ class EventDetails extends Component {
             <div className="review">
                 {this.props.tempEvent.name ?
                     <section className="EventDetails">
-                    <h2>does this look right?</h2>
-                    <h1>{this.props.tempEvent.name}</h1>
-                    <h2>{this.props.tempEvent.shortDescription}</h2>
-                    <p>{this.props.tempEvent.fullDescription}</p>
+                    <h2 className="top-h2">does this look right?</h2>
+                    <article className="preview">
+                        <h1>{this.props.tempEvent.name}</h1>
+                        <h2>{this.props.tempEvent.shortDescription}</h2>
+                        <p className="fullDescription">{this.props.tempEvent.fullDescription}</p>
 
-                    <p>{this.props.tempEvent.location}</p>
-                    <p className="date">Start: {moment(this.props.tempEvent.startDate).format('ddd M/D')} at {moment(this.props.tempEvent.startTime, 'HH:mm:ss').format('h:mm a')}</p>
-                    {this.props.tempEvent.endTime != null &&
-                        <p className="date">End: {moment(this.props.tempEvent.endDate).format('ddd M/D')} at {moment(this.props.tempEvent.endTime, 'HH:mm:ss').format('h:mm a')}</p>}
-                    {this.props.tempEvent.posterLink !== '' &&
-                        <img src={this.props.tempEvent.posterLink} alt="poster would be linked in here with valid url" />
-                    }
-                    <p>for updates: {this.props.tempEvent.updates}</p>
-
-                    {this.props.tempEvent.hostContactPublic &&
-                        <p>host contact: {this.props.tempEvent.hostContact}</p>
-                    }
-                    <button onClick={this.editEvent}>Edit</button>
-                    <button onClick={this.postEvent}>Looks Good!</button>
+                        <p className="location">{this.props.tempEvent.location}</p>
+                        <p className="date">Start: {moment(this.props.tempEvent.startDate).format('ddd M/D')} at {moment(this.props.tempEvent.startTime, 'HH:mm:ss').format('h:mm a')}</p>
+                        {this.props.tempEvent.endTime != null &&
+                            <p className="date">End: {moment(this.props.tempEvent.endDate).format('ddd M/D')} at {moment(this.props.tempEvent.endTime, 'HH:mm:ss').format('h:mm a')}</p>}
+                        {this.props.tempEvent.posterLink !== '' &&
+                            <img src={this.props.tempEvent.posterLink} alt="poster would be linked in here with valid url" />
+                        }
+                        <h3>Updates</h3>
+                        <p className="additionalInfo">{this.props.tempEvent.updates}</p>
+                        <h3>Host Contact</h3>
+                        <p className="additionalInfo">{this.props.tempEvent.hostContact}</p>
+                        
+                    </article>
+                    <button onClick={this.editEvent} className="action-button">Edit</button>
+                    <button onClick={this.postEvent} className="action-button">Looks Good!</button>
                 </section>
                 :
                 <section className="eventError">

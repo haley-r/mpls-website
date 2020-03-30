@@ -77,7 +77,7 @@ class EventForm extends Component {
     render() {
         return (
             <section className="enterEvent">
-                <h2 onClick={this.autoPopulate}>fill in these details!</h2>
+                <h2 onClick={this.autoPopulate} className="top-h2">fill in these details!</h2>
                 <div className="border-div">
                 <form onSubmit={this.createEvent}>
                     <label htmlFor="name-input">Name of Event*<span>short, but specific - max. 50 characters</span></label>

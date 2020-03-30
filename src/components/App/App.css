@@ -159,7 +159,7 @@ img {
     line-height: 1em;
     margin: .25em 0 .5em 0;
 }
-.Details .fullDescription{
+.fullDescription{
     padding: 0 1em 1em 1em;
 }
 .Details .location{
@@ -213,10 +213,25 @@ img {
 .sidenote {
     font-size: .8em;
 }
-.enterEvent h2{
+.top-h2{
     margin-top: 1em;
 }
-
+.eventError, .confirmation{
+    margin-top: 12em;
+}
+.preview{
+    border-color: var(--blue-3);
+}
+.action-button{
+    font-size: 1em;
+    background-color: var(--orangered-1);
+    color: var(--ivory-0);
+    border-radius: 1em;
+    padding: .5em;
+    margin: .5em;
+    font-weight: normal;
+    width: 120px;
+}
 
 
 /* -----FORM-SPECIFIC-STYLES------------ */
