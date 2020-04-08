@@ -24,6 +24,12 @@ class AdminEdit extends Component {
         }
     }
 
+    fillLocation=()=>{
+        this.setState({
+            location: 'The Virtual Commons'
+        })
+    }
+
     //dispatch with bundled input values object (this.state) as payload
     saveEdits = (event) => {
         //prevent form reload upon submission
@@ -33,6 +39,7 @@ class AdminEdit extends Component {
         //go to next page
         this.props.history.push(`/admin/details/${this.props.match.params.eventId}`);
         //not sure if state needs to be cleared
+        window.location.reload(false);
     }
     //track input in various fields based on type
     handleInput = (event, type) => {
@@ -63,7 +70,7 @@ class AdminEdit extends Component {
                         value={this.state.endDate} onChange={(event) => this.handleInput(event, 'endDate')} />
                     <input required id="end-time-input" type="time" className="datetime-input"
                         value={this.state.endTime} onChange={(event) => this.handleInput(event, 'endTime')} />
-                    <label htmlFor="location">Location*<span>name of a place, street address, or URL</span></label>
+                        <label onClick={this.fillLocation} htmlFor="location">Location*<span>name of a place, street address, or URL</span></label>
                     <input required type="text" id="location"
                         value={this.state.location} onChange={(event) => this.handleInput(event, 'location')} />
                     <label htmlFor="full-description">Description*<span>use the description to describe the event (obviously) as well as how to attend and any other important information such as age appropriateness or capacity</span></label>

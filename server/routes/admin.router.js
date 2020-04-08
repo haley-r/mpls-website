@@ -108,10 +108,12 @@ router.put('/update/:eventId', rejectUnauthenticated, (req, res) => {
 });//updates all fields besides id, even if same.
 
 router.delete('/delete/:eventId', rejectUnauthenticated, (req, res) => {
+  console.log('in admin delete, eventId is:', req.params.eventId);
   let queryText = 'DELETE FROM "events" WHERE "id"=$1;';
   let values = [req.params.eventId]
   pool.query(queryText, values)
-    .then(() => res.sendStatus(200))
+    .then(() => {console.log('successful delete');
+       res.sendStatus(200)})
     .catch(() => res.sendStatus(500));
 });//deletes selected event
 

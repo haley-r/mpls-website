@@ -29,8 +29,8 @@ class EventDetails extends Component {
     }
     dispatchDelete = (eventId) => {
         this.props.dispatch({ type: 'DELETE_SELECTED', payload: { id: eventId } });
-        this.props.history.push('/admin');
-        window.location.reload(false);
+        // this.props.history.push('/admin');
+        // window.location.reload(false);
     }
     editMode = () => {
         this.props.history.push(`/admin/edit/${this.props.match.params.eventId}`)
@@ -39,6 +39,12 @@ class EventDetails extends Component {
     handleInput=(event)=> {
         this.setState({
             inputText: event.target.value
+        })
+    }
+
+    fillComment=()=>{
+        this.setState({
+            inputText: 'Changed it!'
         })
     }
 
@@ -113,10 +119,10 @@ class EventDetails extends Component {
 
                 {this.state.commentInput &&
                     <form onSubmit={()=>this.leaveComment(this.state.inputText)} className="note-form">
-                        <label htmlFor="note-text" className="hide">Leave a Note:</label>
+                    <label htmlFor="note-text" className="hide">Leave a Note:</label>
                         <textarea required type="text" id="note-text"
                             value={this.state.inputText} onChange={this.handleInput} />
-                        <input className="input-button" type="submit" name="submit" value="leave note" />
+                <input  className="input-button" type="submit" name="submit" value="leave note" />
                     </form>
                 }
                 {this.props.notes[0] &&

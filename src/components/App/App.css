@@ -87,6 +87,7 @@ h2{
     font-family: 'Shrikhand', cursive;
     padding: 0;
     margin: 0;
+    line-height: 1em;
 }
 h3{
     color: var(--blue-2);
@@ -408,7 +409,7 @@ ul {
 }
 .Header .border-div {
     padding: 0;
-    margin: 8vh 8vw 30vh 8vw;
+    margin: 12vh 8vw 30vh 8vw;
     background-color: var(--blue-0);
     background-color:var(--blue-2);
     border: 10px solid var(--blue-1);
@@ -451,9 +452,19 @@ ul {
     font-size: 1em;
 }
 
+.register-button {
+    display: none;
+    border: 3px solid green;
+    z-index: 10;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+
 /* ----------FOOTER-STYLES-----------*/
 footer {
     position: fixed;
+    z-index: 5;
     color: var(--blue-3);
     font-size: .6em;
     bottom: 10px;
